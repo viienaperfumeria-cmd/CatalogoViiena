@@ -1,0 +1,2514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIIENA Perfumería — Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#4A0B15;
+    --wine-soft:#6B1B28;
+    --cream:#F8EFE5;
+    --pink:#FFBDC5;
+    --ink:#2D0A01;
+    --hairline: rgba(74,11,21,0.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Poppins',sans-serif;
+    font-weight:300;
+  }
+  header{
+    background:var(--wine);
+    color:var(--cream);
+    padding:64px 24px 44px;
+  }
+  .brand-row{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:28px;
+  }
+  .brand-wordmark{
+    font-family:'Prata', serif;
+    font-size:clamp(58px, 10vw, 128px);
+    line-height:0.85;
+    color:var(--cream);
+    letter-spacing:-1px;
+  }
+  .brand-meta{
+    max-width:1200px;
+    margin:14px auto 0;
+    display:flex;
+    justify-content:space-between;
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:3px;
+    font-size:13px;
+    color:var(--pink);
+  }
+  nav.gender-nav{
+    position:sticky; top:0; z-index:10;
+    background:var(--ink);
+    display:flex; justify-content:center; gap:48px;
+    padding:16px;
+  }
+  nav.gender-nav a{
+    color:var(--cream);
+    text-decoration:none;
+    font-family:'Bebas Neue', sans-serif;
+    font-size:16px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+  }
+  nav.gender-nav a:hover{ color:var(--pink); }
+  .search-bar{
+    background:var(--cream);
+    border-bottom:1px solid var(--hairline);
+    padding:22px 24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .search-bar input{
+    width:100%; max-width:460px;
+    padding:13px 22px;
+    border:1px solid var(--hairline);
+    border-radius:2px;
+    font-family:'Poppins',sans-serif;
+    font-weight:300;
+    font-size:14px;
+    color:var(--ink);
+    background:#FFFFFF;
+    outline:none;
+  }
+  .search-bar input:focus{ border-color:var(--wine); }
+  .search-count{
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--wine-soft);
+    font-family:'Bebas Neue', sans-serif;
+  }
+  .no-results{
+    display:none;
+    text-align:center;
+    font-family:'Prata', serif;
+    font-style:italic;
+    font-size:20px;
+    color:var(--wine-soft);
+    padding:80px 0;
+  }
+  main{max-width:1320px; margin:0 auto; padding:10px 28px 120px;}
+  .gender-block{ padding-top:80px; }
+  .gender-title{
+    font-family:'Prata', serif;
+    font-size:clamp(40px,7vw,84px);
+    text-align:center;
+    color:var(--wine);
+    margin-bottom:6px;
+  }
+  .gender-rule{
+    width:64px;
+    height:2px;
+    background:var(--pink);
+    margin:0 auto 56px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+    margin-bottom:40px;
+  }
+  @media (min-width:880px){
+    .grid{ grid-template-columns:1fr 1fr; gap:52px 40px; }
+    .card:nth-child(even){ margin-top:44px; }
+  }
+  .card{
+    background:#FFFFFF;
+    border:1px solid var(--hairline);
+    display:flex;
+    flex-direction:row;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{ transform:translateY(-3px); box-shadow:0 20px 40px rgba(45,10,1,0.14); }
+  .card-img{
+    position:relative;
+    flex:0 0 38%;
+    aspect-ratio:3/4;
+    background:#FFFFFF;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:16px;
+    border-right:1px solid var(--hairline);
+  }
+  .card-img img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+  }
+  .tag-genero{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:var(--wine);
+    color:var(--cream);
+    font-family:'Bebas Neue', sans-serif;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    padding:4px 9px;
+  }
+  .card-body{ flex:1; padding:22px 26px; display:flex; flex-direction:column; gap:9px; justify-content:center; min-width:0; }
+  .marca{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:13px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--wine-soft);
+  }
+  .nombre{
+    font-family:'Prata', serif;
+    font-size:21px;
+    color:var(--ink);
+    line-height:1.2;
+  }
+  .meta{ font-size:12px; color:var(--ink); opacity:0.65; }
+  .chip{
+    display:inline-block;
+    align-self:flex-start;
+    background:var(--pink);
+    color:var(--ink);
+    font-size:10px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    font-family:'Bebas Neue', sans-serif;
+    padding:5px 12px;
+  }
+  .descripcion{
+    font-size:13px;
+    line-height:1.5;
+    color:var(--ink);
+    opacity:0.9;
+  }
+  .notas{
+    font-family:'Poppins', sans-serif;
+    font-style:italic;
+    font-weight:300;
+    font-size:12.5px;
+    line-height:1.45;
+    color:var(--wine-soft);
+    border-top:1px dashed var(--hairline);
+    padding-top:8px;
+  }
+  .notas strong{
+    font-style:normal;
+    font-family:'Bebas Neue', sans-serif;
+    text-transform:uppercase;
+    font-size:10px;
+    letter-spacing:1.5px;
+    color:var(--wine);
+    display:block;
+    margin-bottom:3px;
+  }
+  .precio-box{
+    margin-top:2px;
+    border:1px solid var(--wine);
+    color:var(--wine);
+    font-family:'Bebas Neue', sans-serif;
+    font-size:16px;
+    letter-spacing:1.5px;
+    text-align:center;
+    padding:8px;
+    align-self:flex-start;
+    min-width:130px;
+  }
+  footer{
+    background:var(--wine);
+    color:var(--pink);
+    text-align:center;
+    padding:40px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+  }
+  @media (max-width:560px){
+    .card{ flex-direction:column; }
+    .card-img{ flex:none; aspect-ratio:4/3; border-right:none; border-bottom:1px solid var(--hairline); }
+    .brand-meta{ font-size:11px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-row"><span class="brand-wordmark">viiena</span></div>
+  <div class="brand-meta"><span>PERFUMERÍA</span><span>SINCE 2026</span></div>
+</header>
+
+<nav class="gender-nav">
+  <a href="#dama">Dama</a>
+  <a href="#caballero">Caballero</a>
+  <a href="#unisex">Unisex</a>
+</nav>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Buscar por marca, nombre, familia olfativa...">
+  <span class="search-count" id="searchCount"></span>
+</div>
+
+<main>
+  <div id="dama">
+  <div class="gender-block">
+    <h1 class="gender-title">Dama</h1>
+    <div class="gender-rule"></div>
+    <section>
+      <div class="grid">
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Another Lab Rioh EDP 100ml" alt="Another Lab Rioh" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Another Lab</p>
+            <h3 class="nombre">Rioh</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral cítrico</span>
+            <p class="descripcion">Fresco y floral, de la línea nicho Another Lab.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos. Corazón: floral blanco. Fondo: almizcle, madera clara.</p>
+            <div class="precio-box">$380.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Ariana Grande Cloud 100ML Edp L.png" alt="Ariana Grande Cloud" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Ariana Grande</p>
+            <h3 class="nombre">Cloud</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Gourmand floral dulce</span>
+            <p class="descripcion">Dulce y aterciopelado, evoca la comodidad de las nubes con crema de almendra y un fondo goloso de praliné.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, coco. Corazón: crema de almendra, orquídea. Fondo: praliné, almizcle.</p>
+            <div class="precio-box">$329.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Ariana Grande Cloud pink 3.4 edp L" alt="Ariana Grande Cloud Pink" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Ariana Grande</p>
+            <h3 class="nombre">Cloud Pink</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral frutal dulce</span>
+            <p class="descripcion">Versión más frutal y floral de Cloud, con bayas rojas y flor de cerezo sobre una base cremosa.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: frambuesa, pera. Corazón: jazmín, flor de cerezo. Fondo: almizcle cremoso, vainilla.</p>
+            <div class="precio-box">$310.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Armaf Art D’Amour 100ML Edp L.png" alt="Armaf Art D'Amour" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Armaf</p>
+            <h3 class="nombre">Art D'Amour</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral gourmand</span>
+            <p class="descripcion">Floral gourmand dulce y envolvente, con flores blancas y un toque goloso de praliné y vainilla.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: grosella negra, pera. Corazón: jazmín, azahar. Fondo: praliné, vainilla, pachulí.</p>
+            <div class="precio-box">$190.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Armaf Miss Armaf Mystique 100ML Edp L.png" alt="Armaf Miss Mystique" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Armaf</p>
+            <h3 class="nombre">Miss Mystique</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral almizclado</span>
+            <p class="descripcion">Floral almizclado con toque afrutado, delicado y femenino para el uso diario.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, pera. Corazón: jazmín, rosa, lirio. Fondo: almizcle, vainilla, sándalo.</p>
+            <div class="precio-box">$390.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Armaf yum yum 3.4 edp L" alt="Armaf Yum Yum" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Armaf</p>
+            <h3 class="nombre">Yum Yum</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral gourmand dulce</span>
+            <p class="descripcion">Dulce y juguetona, con acordes golosos de vainilla y caramelo sobre base floral.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: mandarina, frambuesa. Corazón: rosa, jazmín. Fondo: vainilla, almizcle, caramelo.</p>
+            <div class="precio-box">$290.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Black Opium Le Parfum para Mujer   90 mL Parfum" alt="Yves Saint Laurent Black Opium" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Yves Saint Laurent</p>
+            <h3 class="nombre">Black Opium</h3>
+            <p class="meta">Parfum &middot; 90 ML</p>
+            <span class="chip">Oriental gourmand adictivo</span>
+            <p class="descripcion">El gourmand adictivo por excelencia: café, vainilla y flores blancas.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, mandarina, pimienta rosa. Corazón: café, jazmín, flor de naranjo. Fondo: vainilla, pachulí, cedro.</p>
+            <div class="precio-box">$590.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Burberry Her 100ML Edp L.png" alt="Burberry Her" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Burberry</p>
+            <h3 class="nombre">Her</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Frutal dulce</span>
+            <p class="descripcion">Afrutado y dulce, con bayas rojas maceradas y un fondo cálido de vainilla y ámbar.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bayas rojas, cassis. Corazón: jazmín, violeta. Fondo: almizcle, ámbar, vainilla.</p>
+            <div class="precio-box">$499.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Burberry Her Intense 50ML Edp L.png" alt="Burberry Her Intense" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Burberry</p>
+            <h3 class="nombre">Her Intense</h3>
+            <p class="meta">EDP &middot; 50 ML</p>
+            <span class="chip">Frutal ambarado</span>
+            <p class="descripcion">Versión más intensa de Her, con cereza negra y una base ambarada envolvente.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cereza negra, cassis. Corazón: jazmín, rosa. Fondo: vainilla, ámbar, pachulí.</p>
+            <div class="precio-box">$590.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Carolina Herrera 212 VIP Women 80ML Edp L.png" alt="Carolina Herrera 212 VIP Women" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">212 VIP Women</h3>
+            <p class="meta">EDP &middot; 80 ML</p>
+            <span class="chip">Frutal floral gourmand</span>
+            <p class="descripcion">Glamurosa y sensual, con fruta de la pasión y una base de vainilla y caramelo.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: fruta de la pasión, gardenia. Corazón: gardenia, jazmín. Fondo: vainilla, caramelo, almizcle.</p>
+            <div class="precio-box">$420.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Carolina Herrera Good Girl 50ML Edp L.png" alt="Carolina Herrera Good Girl" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">Good Girl</h3>
+            <p class="meta">EDP &middot; 50 ML</p>
+            <span class="chip">Floral oriental gourmand</span>
+            <p class="descripcion">Contraste entre dulce y oscuro: almendra y café sobre una base de cacao y haba tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: almendra, café. Corazón: jazmín sambac, tuberosa. Fondo: cacao, tonka, vainilla.</p>
+            <div class="precio-box">$490.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Carolina Herrera Good Girl Blush 80ML Edp L.png" alt="Carolina Herrera Good Girl Blush" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">Good Girl Blush</h3>
+            <p class="meta">EDP &middot; 80 ML</p>
+            <span class="chip">Floral frutal dulce</span>
+            <p class="descripcion">Versión más frutal y luminosa de Good Girl, con frambuesa y base dulce de tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: frambuesa, mandarina. Corazón: rosa, jazmín. Fondo: tonka, vainilla.</p>
+            <div class="precio-box">$560.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Carolina Herrera La Bomba 30ML Edp L.png" alt="Carolina Herrera La Bomba" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">La Bomba</h3>
+            <p class="meta">EDP &middot; 30 ML</p>
+            <span class="chip">Floral oriental dulce</span>
+            <p class="descripcion">Floral blanco intenso y dulce, con un fondo cálido de vainilla y tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: mandarina, ylang ylang. Corazón: jazmín, tuberosa. Fondo: vainilla, haba tonka.</p>
+            <div class="precio-box">$460.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Carolina Herrera Very Good Girl 30ML Edp L.png" alt="Carolina Herrera Very Good Girl" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">Very Good Girl</h3>
+            <p class="meta">EDP &middot; 30 ML</p>
+            <span class="chip">Floral oriental intenso</span>
+            <p class="descripcion">Versión más oscura y rebelde de Good Girl, floral con fondo amaderado-vainillado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: grosella negra. Corazón: jazmín, rosa oscura. Fondo: pachulí, vainilla.</p>
+            <div class="precio-box">$530.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Chanel chance Eau Tendré 100ml" alt="Chanel Chance Eau Tendre" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Chanel</p>
+            <h3 class="nombre">Chance Eau Tendre</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Floral afrutado tierno</span>
+            <p class="descripcion">Delicado y fresco, floral afrutado con un fondo suave de almizcle blanco.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: toronja, quinoa. Corazón: jazmín, peonía. Fondo: almizcle blanco, ámbar.</p>
+            <div class="precio-box">$890.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Chanel Coco Mademoiselle 100ML Edp L.png" alt="Chanel Coco Mademoiselle" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Chanel</p>
+            <h3 class="nombre">Coco Mademoiselle</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral oriental chipre</span>
+            <p class="descripcion">Icónico floral chipre con toque cítrico y una base cálida de pachulí y vainilla.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: naranja, bergamota. Corazón: rosa, jazmín, pachulí. Fondo: vainilla, ámbar, vetiver.</p>
+            <div class="precio-box">$990.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Chanel Gabrielle EDP 100ml" alt="Chanel Gabrielle" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Chanel</p>
+            <h3 class="nombre">Gabrielle</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral solar</span>
+            <p class="descripcion">Ramo floral luminoso y solar, sin fondo oriental pesado, muy versátil.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: grosella negra, mandarina. Corazón: jazmín, tuberosa, ylang ylang. Fondo: almizcle, madera de sándalo.</p>
+            <div class="precio-box">$950.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Chanel N°5 100ML Edp L.png" alt="Chanel N°5" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Chanel</p>
+            <h3 class="nombre">N°5</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral aldehído</span>
+            <p class="descripcion">El floral aldehído más icónico de la perfumería, atemporal y elegante.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: aldehídos, ylang ylang. Corazón: rosa, jazmín, lirio. Fondo: sándalo, vainilla, almizcle.</p>
+            <div class="precio-box">$850.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Creed Aventus For Her 25ML Edp L.png" alt="Creed Aventus For Her" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Creed</p>
+            <h3 class="nombre">Aventus For Her</h3>
+            <p class="meta">EDP &middot; 25 ML</p>
+            <span class="chip">Floral frutal afrutado</span>
+            <p class="descripcion">Versión femenina de Aventus: frutal, floral y elegante con fondo amaderado suave.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: piña, grosella negra. Corazón: rosa, jazmín. Fondo: almizcle, ámbar, madera.</p>
+            <div class="precio-box">$1.250.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Dior J’adore 100ML Edp L.png" alt="Dior J'adore" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Dior</p>
+            <h3 class="nombre">J'adore</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral afrutado luminoso</span>
+            <p class="descripcion">El floral afrutado más icónico de Dior, luminoso y radiante.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, mandarina. Corazón: jazmín, rosa, ylang ylang. Fondo: almizcle.</p>
+            <div class="precio-box">$850.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Dolce &amp; Gabbana Light Blue 100ML Edt L.png" alt="Dolce &amp; Gabbana Light Blue" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Dolce &amp; Gabbana</p>
+            <h3 class="nombre">Light Blue</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Cítrico floral fresco</span>
+            <p class="descripcion">Fresco y mediterráneo, evoca la costa amalfitana con cítricos y flores blancas.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: manzana, limón siciliano. Corazón: campanilla, jazmín. Fondo: cedro, almizcle.</p>
+            <div class="precio-box">$329.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Flowerbomb Viktor &amp; Rolf EDP 100ml" alt="Viktor &amp; Rolf Flowerbomb" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Viktor &amp; Rolf</p>
+            <h3 class="nombre">Flowerbomb</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral oriental explosivo</span>
+            <p class="descripcion">Explosión floral oriental, dulce e intensa, un clásico moderno.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: té verde, bergamota. Corazón: jazmín, rosa, orquídea. Fondo: pachulí, vainilla, almizcle.</p>
+            <div class="precio-box">$510.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Giorgio Armani My Way 90ML Edp L.png" alt="Giorgio Armani My Way" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Giorgio Armani</p>
+            <h3 class="nombre">My Way</h3>
+            <p class="meta">EDP &middot; 90 ML</p>
+            <span class="chip">Floral blanco</span>
+            <p class="descripcion">Floral blanco luminoso, un viaje personal expresado en jazmín y tuberosa.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, azahar. Corazón: jazmín, tuberosa. Fondo: vainilla, almizcle blanco, cedro.</p>
+            <div class="precio-box">$590.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Givenchy Irresistible EDP 80ml" alt="Givenchy Irresistible" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Givenchy</p>
+            <h3 class="nombre">Irresistible</h3>
+            <p class="meta">EDP &middot; 80 ML</p>
+            <span class="chip">Floral rosa fresco</span>
+            <p class="descripcion">Floral de rosa fresca y verde, moderno y delicado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: rosa fresca. Corazón: rosa, peonía. Fondo: almizcle, vetiver, ámbar.</p>
+            <div class="precio-box">$390.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Gucci bloom EDP 3.3" alt="Gucci Bloom" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Gucci</p>
+            <h3 class="nombre">Bloom</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral blanco intenso</span>
+            <p class="descripcion">Ramo floral blanco denso e intenso, dominado por tuberosa y jazmín.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: tuberosa. Corazón: jazmín sambac, jazmín rango-rango. Fondo: iris.</p>
+            <div class="precio-box">$450.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Gucci Flora Gorgeus Gardenia EDP 100ml" alt="Gucci Flora Gorgeous Gardenia" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Gucci</p>
+            <h3 class="nombre">Flora Gorgeous Gardenia</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral blanco frutal</span>
+            <p class="descripcion">Floral blanco radiante centrado en gardenia, fresco y femenino.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, grosella roja. Corazón: gardenia, jazmín. Fondo: almizcle, pachulí.</p>
+            <div class="precio-box">$495.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Gucci Guille Pour Femme EDT 90ml" alt="Gucci Guilty Pour Femme" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Gucci</p>
+            <h3 class="nombre">Guilty Pour Femme</h3>
+            <p class="meta">EDT &middot; 90 ML</p>
+            <span class="chip">Floral frutal</span>
+            <p class="descripcion">Fresco y floral con un toque afrutado, versión ligera de Guilty.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: mandarina, pera. Corazón: rosa, peonía. Fondo: pachulí, ámbar.</p>
+            <div class="precio-box">$430.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Gucci Guilty Absolut EDP 90ml" alt="Gucci Guilty Absolute" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Gucci</p>
+            <h3 class="nombre">Guilty Absolute</h3>
+            <p class="meta">EDP &middot; 90 ML</p>
+            <span class="chip">Floral amaderado intenso</span>
+            <p class="descripcion">Más intenso y amaderado que el Guilty original, sensual y envolvente.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: ciruela. Corazón: rosa, iris. Fondo: pachulí, almizcle, madera.</p>
+            <div class="precio-box">$490.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Hermès Voyage d’Hermès 100ML Parfum U.png" alt="Hermès Voyage d'Hermès" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Hermès</p>
+            <h3 class="nombre">Voyage d'Hermès</h3>
+            <p class="meta">Parfum &middot; 100 ML</p>
+            <span class="chip">Cítrico amaderado unisex</span>
+            <p class="descripcion">Fresco, mineral y elegante, pensado para el viaje; unisex y versátil.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, cardamomo. Corazón: notas minerales, rosa. Fondo: almizcle, cedro.</p>
+            <div class="precio-box">$490.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/ILMIN IL ROSO EDP 30ML" alt="ILMIN Il Roso" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">ILMIN</p>
+            <h3 class="nombre">Il Roso</h3>
+            <p class="meta">EDP &middot; 30 ML</p>
+            <span class="chip">Floral rosa</span>
+            <p class="descripcion">Floral centrado en rosa, dulce y romántico.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: rosa, frutas rojas. Corazón: rosa turca. Fondo: almizcle, madera.</p>
+            <div class="precio-box">$699.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Lancome Idole L’intense EDP 50ml" alt="Lancôme Idôle L'Intense" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lancôme</p>
+            <h3 class="nombre">Idôle L'Intense</h3>
+            <p class="meta">EDP &middot; 50 ML</p>
+            <span class="chip">Floral almizclado intenso</span>
+            <p class="descripcion">Versión más intensa de Idôle, floral limpio con fondo cálido de vainilla.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera. Corazón: rosa, jazmín. Fondo: vainilla, almizcle blanco, pachulí.</p>
+            <div class="precio-box">$530.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Lancome Tresor EDP 100ml" alt="Lancôme Trésor" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lancôme</p>
+            <h3 class="nombre">Trésor</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral frutal clásico</span>
+            <p class="descripcion">Clásico floral frutal romántico, cálido y elegante.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: melocotón, lichi. Corazón: rosa, jacinto, lirio. Fondo: almizcle, sándalo, vainilla.</p>
+            <div class="precio-box">$495.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Lancôme Idôle 75ML Edp L.png" alt="Lancôme Idôle" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lancôme</p>
+            <h3 class="nombre">Idôle</h3>
+            <p class="meta">EDP &middot; 75 ML</p>
+            <span class="chip">Floral limpio moderno</span>
+            <p class="descripcion">Floral limpio y moderno, fresco con un fondo suave de almizcle y vainilla.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, bergamota. Corazón: rosa, jazmín. Fondo: vainilla, almizcle blanco, pachulí.</p>
+            <div class="precio-box">$490.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Lattafa Badee Al Oud Amethyst 100ML Edp U.png" alt="Lattafa Badee Al Oud Amethyst" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Badee Al Oud Amethyst</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral amaderado oud</span>
+            <p class="descripcion">Floral amaderado con oud, cálido y de larga duración, estilo oriental.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, azafrán. Corazón: rosa, oud. Fondo: ámbar, almizcle, madera.</p>
+            <div class="precio-box">$179.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Lattafa Eclaire Banoffi EDP 100ml" alt="Lattafa Eclaire Banoffi" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Eclaire Banoffi</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Gourmand dulce</span>
+            <p class="descripcion">Gourmand goloso inspirado en el postre banoffee: plátano, caramelo y crema.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: plátano, caramelo. Corazón: crema, vainilla. Fondo: almizcle, haba tonka.</p>
+            <div class="precio-box">$260.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Lattafa Yara 20ML Perfume Oil L.png" alt="Lattafa Yara (Aceite)" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Yara (Aceite)</h3>
+            <p class="meta">Aceite &middot; 20 ML</p>
+            <span class="chip">Floral frutal dulce</span>
+            <p class="descripcion">Versión en aceite de Yara: floral frutal, dulce y de aplicación concentrada.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, mandarina. Corazón: jazmín, tuberosa. Fondo: vainilla, almizcle.</p>
+            <div class="precio-box">$200.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Lattafa Yara Elixir EDP 100ml" alt="Lattafa Yara Elixir" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Yara Elixir</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Gourmand floral dulce</span>
+            <p class="descripcion">Versión más golosa y ambarada de Yara, con praliné y caramelo.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, praliné. Corazón: jazmín, orquídea. Fondo: vainilla, caramelo, almizcle.</p>
+            <div class="precio-box">$230.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Miss Dior 100ML Edp L.png" alt="Dior Miss Dior" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Dior</p>
+            <h3 class="nombre">Miss Dior</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral chipre</span>
+            <p class="descripcion">Romántico y floral, rosa y peonía sobre un fondo chipre suave.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: mandarina, grosella. Corazón: rosa, peonía. Fondo: pachulí, almizcle.</p>
+            <div class="precio-box">$790.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Mon guerlain EDP 100ml" alt="Guerlain Mon Guerlain" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Guerlain</p>
+            <h3 class="nombre">Mon Guerlain</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral aromático dulce</span>
+            <p class="descripcion">Floral aromático con lavanda y una base cálida de vainilla y tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: lavanda. Corazón: jazmín sambac, rosa. Fondo: vainilla, haba tonka, sándalo.</p>
+            <div class="precio-box">$430.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Móntale Oud Roses EDP 100ml" alt="Montale Oud Roses" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Montale</p>
+            <h3 class="nombre">Oud Roses</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral amaderado oud</span>
+            <p class="descripcion">Rosa intensa combinada con oud, cálido y de gran proyección.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: rosa. Corazón: rosa damascena, oud. Fondo: almizcle, madera.</p>
+            <div class="precio-box">$580.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Nina Ricci EDT 80ml" alt="Nina Ricci Nina" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Nina Ricci</p>
+            <h3 class="nombre">Nina</h3>
+            <p class="meta">EDT &middot; 80 ML</p>
+            <span class="chip">Floral frutal dulce</span>
+            <p class="descripcion">Dulce y afrutado en su icónico frasco de manzana, floral con fondo goloso.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: manzana, mandarina. Corazón: jazmín, azucena. Fondo: vainilla, caramelo, almizcle.</p>
+            <div class="precio-box">$290.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Paco Rabanne Lady Million 80ml" alt="Paco Rabanne Lady Million" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Paco Rabanne</p>
+            <h3 class="nombre">Lady Million</h3>
+            <p class="meta">EDP &middot; 80 ML</p>
+            <span class="chip">Floral afrutado dorado</span>
+            <p class="descripcion">Glamuroso y dorado, floral afrutado con un fondo dulce de miel y tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: frambuesa, naranja amarga. Corazón: jazmín, azahar, gardenia. Fondo: haba tonka, miel, almizcle.</p>
+            <div class="precio-box">$420.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Prada candy EDP 80ml" alt="Prada Candy" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Prada</p>
+            <h3 class="nombre">Candy</h3>
+            <p class="meta">EDP &middot; 80 ML</p>
+            <span class="chip">Gourmand dulce</span>
+            <p class="descripcion">Gourmand goloso centrado en caramelo, cálido y dulce.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: caramelo. Corazón: flor de azahar, benjuí. Fondo: almizcle, madera de haba tonka.</p>
+            <div class="precio-box">$590.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Prada Paradoxe Intense 50ML Edp L.png" alt="Prada Paradoxe Intense 50ml" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Prada</p>
+            <h3 class="nombre">Paradoxe Intense 50ml</h3>
+            <p class="meta">EDP &middot; 50 ML</p>
+            <span class="chip">Floral amberado intenso</span>
+            <p class="descripcion">Floral amaderado intenso, moderno y envolvente con pachulí y ámbar gris.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, jazmín. Corazón: pachulí blanco, ámbar gris. Fondo: almizcle, vainilla.</p>
+            <div class="precio-box">$750.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Prada Paradoxe Intense 90ML Edp L.png" alt="Prada Paradoxe Intense 90ml" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Prada</p>
+            <h3 class="nombre">Paradoxe Intense 90ml</h3>
+            <p class="meta">EDP &middot; 90 ML</p>
+            <span class="chip">Floral amberado intenso</span>
+            <p class="descripcion">Floral amaderado intenso, moderno y envolvente con pachulí y ámbar gris.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, jazmín. Corazón: pachulí blanco, ámbar gris. Fondo: almizcle, vainilla.</p>
+            <div class="precio-box">$750.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Tous Love me EDP 90ml" alt="Tous Love Me" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Tous</p>
+            <h3 class="nombre">Love Me</h3>
+            <p class="meta">EDP &middot; 90 ML</p>
+            <span class="chip">Floral dulce</span>
+            <p class="descripcion">Floral dulce y romántico, ligero y fácil de llevar.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pera, mandarina. Corazón: jazmín, flor de azahar. Fondo: vainilla, almizcle.</p>
+            <div class="precio-box">$290.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Valentino Donna Born In Roma Intense 100ML Edp L.png" alt="Valentino Donna Born in Roma Intense" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Valentino</p>
+            <h3 class="nombre">Donna Born in Roma Intense</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral ambarado intenso</span>
+            <p class="descripcion">Floral intenso y sensual con un fondo cálido de vainilla y ámbar.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota. Corazón: jazmín, rosa. Fondo: vainilla, almizcle, ámbar.</p>
+            <div class="precio-box">$720.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Versace Bright Crystal 90ML Edt L.png" alt="Versace Bright Crystal" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Versace</p>
+            <h3 class="nombre">Bright Crystal</h3>
+            <p class="meta">EDT &middot; 90 ML</p>
+            <span class="chip">Floral afrutado fresco</span>
+            <p class="descripcion">Fresco y luminoso, floral afrutado con un fondo suave de almizcle.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: granada, limón. Corazón: peonía, magnolia, loto. Fondo: almizcle, ámbar, madera.</p>
+            <div class="precio-box">$320.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Xerjoff Erba Pura 50ML Edp U.png" alt="Xerjoff Erba Pura" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Xerjoff</p>
+            <h3 class="nombre">Erba Pura</h3>
+            <p class="meta">EDP &middot; 50 ML</p>
+            <span class="chip">Floral frutal cítrico</span>
+            <p class="descripcion">Frutal y floral, luminoso con un fondo cálido; de la casa de nicho Xerjoff.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, piña, cassis. Corazón: jazmín, flor de azahar. Fondo: almizcle, sándalo, ámbar.</p>
+            <div class="precio-box">$795.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/YSL Libre Intense EDP 90ml" alt="Yves Saint Laurent Libre Intense" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Yves Saint Laurent</p>
+            <h3 class="nombre">Libre Intense</h3>
+            <p class="meta">EDP &middot; 90 ML</p>
+            <span class="chip">Floral aromático intenso</span>
+            <p class="descripcion">Versión más intensa de Libre, lavanda y flor de azahar sobre fondo cálido de vainilla.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: lavanda, mandarina. Corazón: flor de azahar, jazmín. Fondo: vainilla, almizcle, haba tonka.</p>
+            <div class="precio-box">$690.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Yves Saint Laurent Libre 90ML Edp L.png" alt="Yves Saint Laurent Libre" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Yves Saint Laurent</p>
+            <h3 class="nombre">Libre</h3>
+            <p class="meta">EDP &middot; 90 ML</p>
+            <span class="chip">Floral aromático</span>
+            <p class="descripcion">La versión original de Libre: lavanda y azahar sobre un fondo cálido de vainilla.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: mandarina, casis. Corazón: flor de azahar, jazmín. Fondo: vainilla, almizcle blanco, haba tonka.</p>
+            <div class="precio-box">$640.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="DAMA/Tom Ford Lost Cherry/Tom Ford Lost Cherry.jpg" alt="Tom Ford Lost Cherry" loading="lazy">
+            <span class="tag-genero">Dama</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Tom Ford</p>
+            <h3 class="nombre">Lost Cherry</h3>
+            <p class="meta">EDP &middot; 30 ML</p>
+            <span class="chip">Gourmand frutal intenso</span>
+            <p class="descripcion">Sensual y adictivo, cereza embriagadora sobre un fondo cálido de vainilla y pachulí.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cereza licorosa, almendra amarga. Corazón: flor de cerezo, rosa turca. Fondo: pachulí, vainilla, almizcle.</p>
+            <div class="precio-box">$1.390.000</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </div>
+  </div>
+  <div id="caballero">
+  <div class="gender-block">
+    <h1 class="gender-title">Caballero</h1>
+    <div class="gender-rule"></div>
+    <section>
+      <div class="grid">
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/212 VIP men carolina herrera EDT 100ml" alt="Carolina Herrera 212 VIP Men" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">212 VIP Men</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático especiado</span>
+            <p class="descripcion">Fresco y festivo, con un toque de vodka helado y fondo de cuero y tabaco.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: menta, vodka. Corazón: salvia, pimienta. Fondo: almizcle, cuero, tabaco.</p>
+            <div class="precio-box">$310.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/AL HARAMAIN L`AVENTURE BLANCHE DM Eau de Parfum 100 ml.png" alt="Al Haramain L'Aventure Blanche" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Al Haramain</p>
+            <h3 class="nombre">L'Aventure Blanche</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental floral</span>
+            <p class="descripcion">Cálido y floral con un fondo ambarado, típico estilo Al Haramain.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos, especias. Corazón: flores blancas. Fondo: almizcle, ámbar, madera.</p>
+            <div class="precio-box">$210.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/AL HARAMAIN L`AVENTURE HM Eau de Parfum 100 ml.png" alt="Al Haramain L'Aventure" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Al Haramain</p>
+            <h3 class="nombre">L'Aventure</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado</span>
+            <p class="descripcion">Oriental amaderado con oud y especias, cálido y potente.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias, cítricos. Corazón: oud, rosa. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$210.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ANOTHER LAB GERMANY 92 Eau de Parfum 90ml.png" alt="Another Lab Germany 92" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Another Lab</p>
+            <h3 class="nombre">Germany 92</h3>
+            <p class="meta">EDP &middot; 90 ML</p>
+            <span class="chip">Aromático fresco</span>
+            <p class="descripcion">Fresco y aromático, de la línea conceptual Another Lab.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos, notas verdes. Corazón: notas aromáticas. Fondo: almizcle, madera.</p>
+            <div class="precio-box">$380.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ANOTHER LAB ITALY 86 Eau de parfum 90ml.png" alt="Another Lab Italy 86" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Another Lab</p>
+            <h3 class="nombre">Italy 86</h3>
+            <p class="meta">EDP &middot; 90 ML</p>
+            <span class="chip">Cítrico aromático</span>
+            <p class="descripcion">Fresco y mediterráneo, inspirado en Italia; línea conceptual Another Lab.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos italianos. Corazón: notas florales. Fondo: madera clara, almizcle.</p>
+            <div class="precio-box">$380.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Armaf Club de Nuit Intense Man 105ML Edt M.png" alt="Armaf Club de Nuit Intense (Man)" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Armaf</p>
+            <h3 class="nombre">Club de Nuit Intense (Man)</h3>
+            <p class="meta">EDT &middot; 105 ML</p>
+            <span class="chip">Amaderado frutal</span>
+            <p class="descripcion">Fresco y afrutado en salida, con un corazón amaderado y fondo ahumado. El clásico más reconocido de Armaf.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: piña, bergamota, manzana negra. Corazón: abedul, jazmín. Fondo: almizcle, ámbar, roble.</p>
+            <div class="precio-box">$190.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ARMANI STRONGER WITH YOU INTENSELY HM Eau de Parfum 100ml.png" alt="Giorgio Armani Stronger With You Intensely" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Giorgio Armani</p>
+            <h3 class="nombre">Stronger With You Intensely</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental especiado dulce</span>
+            <p class="descripcion">Versión más intensa y dulce de Stronger With You, cálida y envolvente.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pimienta rosa, cardamomo. Corazón: lavanda, haba tonka. Fondo: vainilla, ámbar, cacao.</p>
+            <div class="precio-box">$580.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Bade’e Al Oud Sublime EDP 100ml" alt="Lattafa Bade'e Al Oud Sublime" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Bade'e Al Oud Sublime</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Oriental amaderado con oud y azafrán, cálido y de larga duración.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: azafrán, cítricos. Corazón: rosa, oud. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$198.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Bharara King EDP 100ml" alt="Bharara King" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Bharara</p>
+            <h3 class="nombre">King</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Amaderado especiado</span>
+            <p class="descripcion">Masculino y especiado, con fondo ambarado y de cuero, potente y llamativo.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, manzana. Corazón: especias, salvia. Fondo: ámbar, madera, cuero.</p>
+            <div class="precio-box">$305.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Bond The Scent of Peace Eau de Parfum HM 100ml.png" alt="Bond No. 9 The Scent of Peace" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Bond No. 9</p>
+            <h3 class="nombre">The Scent of Peace</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Aromático limpio</span>
+            <p class="descripcion">Fresco y limpio, aromático con fondo amaderado suave; nicho neoyorquino.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, notas verdes. Corazón: violeta. Fondo: almizcle, cedro.</p>
+            <div class="precio-box">$1.100.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Bvlgari Aqva EDT 100ml" alt="Bvlgari Aqva" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Bvlgari</p>
+            <h3 class="nombre">Aqva</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Acuático amaderado</span>
+            <p class="descripcion">Fresco y acuático con fondo amaderado, evoca la profundidad del mar.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: notas marinas, romero. Corazón: notas amaderadas acuáticas. Fondo: almizcle, ámbar.</p>
+            <div class="precio-box">$550.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/BVLGARI MAN IN BLACK HM Eau de Parfum 100 mL.png" alt="Bvlgari Man In Black" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Bvlgari</p>
+            <h3 class="nombre">Man In Black</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental especiado cuero</span>
+            <p class="descripcion">Intenso y masculino, ron y cuero sobre un fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: ron, cuero. Fondo: haba tonka, ámbar, cuero.</p>
+            <div class="precio-box">$510.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Carolina Herrera 212 Parfum 100ml" alt="Carolina Herrera 212" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">212</h3>
+            <p class="meta">Parfum &middot; 100 ML</p>
+            <span class="chip">Aromático fresco</span>
+            <p class="descripcion">El clásico urbano de Carolina Herrera, fresco y aromático con fondo amaderado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos, menta. Corazón: salvia, cardamomo. Fondo: cedro, almizcle, ámbar.</p>
+            <div class="precio-box">$450.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/CH 212 Heroes HM Eau de Toilette 90 ml.png" alt="Carolina Herrera 212 Heroes" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">212 Heroes</h3>
+            <p class="meta">EDT &middot; 90 ML</p>
+            <span class="chip">Aromático fresco</span>
+            <p class="descripcion">Fresco y urbano, edición especial de la línea 212.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos. Corazón: notas aromáticas. Fondo: almizcle, madera.</p>
+            <div class="precio-box">$410.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/CH 212 MEN NYC Eau de Toilette 100ml.png" alt="Carolina Herrera 212 Men NYC" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">212 Men NYC</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático fresco</span>
+            <p class="descripcion">El clásico urbano masculino de Carolina Herrera.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos, menta. Corazón: salvia, cardamomo. Fondo: cedro, almizcle.</p>
+            <div class="precio-box">$410.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/CH 212 VIP BLACK HM Eau de Parfum 100 ml.png" alt="Carolina Herrera 212 VIP Black" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">212 VIP Black</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental especiado intenso</span>
+            <p class="descripcion">Versión nocturna e intensa de 212 VIP, con café y cuero.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: café, cardamomo. Corazón: especias. Fondo: cuero, ámbar, madera.</p>
+            <div class="precio-box">$440.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/CH Bad Boy Eau de Toilett 100ml.png" alt="Carolina Herrera Bad Boy" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">Bad Boy</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Oriental especiado dulce</span>
+            <p class="descripcion">Audaz y dulce, cacao y tonka sobre un fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, anís. Corazón: cacao, lavanda. Fondo: haba tonka, ámbar, vetiver.</p>
+            <div class="precio-box">$430.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/CH MEN CLASICO Eau de Toilette 100ML.png" alt="Carolina Herrera Men Clásico" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Carolina Herrera</p>
+            <h3 class="nombre">Men Clásico</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático clásico</span>
+            <p class="descripcion">El clásico masculino original de Carolina Herrera, fresco y atemporal.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos, lavanda. Corazón: especias. Fondo: cedro, almizcle.</p>
+            <div class="precio-box">$410.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Chanel Bleu Parfum 100ml" alt="Chanel Bleu de Chanel" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Chanel</p>
+            <h3 class="nombre">Bleu de Chanel</h3>
+            <p class="meta">Parfum &middot; 100 ML</p>
+            <span class="chip">Amaderado aromático</span>
+            <p class="descripcion">Fresco y elegante en salida, con un fondo amaderado profundo de sándalo e incienso.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pomelo, menta. Corazón: jengibre, nuez moscada. Fondo: sándalo, cedro, incienso.</p>
+            <div class="precio-box">$850.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Christian Dior Sauvage EDP 100ml" alt="Christian Dior Sauvage" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Christian Dior</p>
+            <h3 class="nombre">Sauvage</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Fresco amaderado ambarado</span>
+            <p class="descripcion">El fresco amaderado más popular actualmente, potente y versátil.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, pimienta de Sichuan. Corazón: lavanda, geranio. Fondo: ámbar gris, cedro, vetiver.</p>
+            <div class="precio-box">$680.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Creed Aventus Cologne Eau de Parfum 100 ml.png" alt="Creed Aventus Cologne" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Creed</p>
+            <h3 class="nombre">Aventus Cologne</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Amaderado frutal fresco</span>
+            <p class="descripcion">Versión más ligera y fresca de Aventus, frutal y amaderada.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: piña, bergamota. Corazón: abedul, jazmín. Fondo: almizcle, ámbar.</p>
+            <div class="precio-box">$1.290.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Creed Green Irish Tweed Eau de Parfum 100 ml.png" alt="Creed Green Irish Tweed" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Creed</p>
+            <h3 class="nombre">Green Irish Tweed</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Aromático verde</span>
+            <p class="descripcion">Fresco y verde, un clásico atemporal de Creed.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: limón, verbena. Corazón: violeta, iris. Fondo: sándalo, ámbar, almizcle.</p>
+            <div class="precio-box">$1.050.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Creed Mountain Silver Water Eau de Parfum 100ml.png" alt="Creed Silver Mountain Water" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Creed</p>
+            <h3 class="nombre">Silver Mountain Water</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Cítrico acuático fresco</span>
+            <p class="descripcion">Fresco y cristalino, cítrico con un toque de té verde.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: mandarina verde, bergamota. Corazón: té verde, moras. Fondo: almizcle, sándalo.</p>
+            <div class="precio-box">$1.290.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/CREED OUD ZARIAN Eau de Parfum 100ml.png" alt="Creed Oud Zarian" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Creed</p>
+            <h3 class="nombre">Oud Zarian</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Oud elegante y especiado, típico estilo Creed de lujo.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: azafrán, cítricos. Corazón: oud, rosa. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$1.710.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/D&amp;G Light Blue Men Eau de Toilette.png" alt="Dolce &amp; Gabbana Light Blue Men" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Dolce &amp; Gabbana</p>
+            <h3 class="nombre">Light Blue Men</h3>
+            <p class="meta">EDT &middot; Confirmar</p>
+            <span class="chip">Cítrico acuático fresco</span>
+            <p class="descripcion">Fresco y mediterráneo, versión masculina de Light Blue.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: limón siciliano, manzana. Corazón: romero, jazmín. Fondo: almizcle blanco, roble.</p>
+            <div class="precio-box">$399.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/DEVIER AMBER ARABIAN UNISEX EXTRACTO 80 ML.png" alt="Devier Amber Arabian" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Devier</p>
+            <h3 class="nombre">Amber Arabian</h3>
+            <p class="meta">Extracto &middot; 80 ML</p>
+            <span class="chip">Oriental ambarado</span>
+            <p class="descripcion">Cálido y ambarado con toques de oud, intenso y de larga duración.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: ámbar, oud. Fondo: madera, almizcle.</p>
+            <div class="precio-box">$590.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/DEVIER SINFONIA 21 UNISEX EXTRACTO 80 ML.png" alt="Devier Sinfonía 21" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Devier</p>
+            <h3 class="nombre">Sinfonía 21</h3>
+            <p class="meta">Extracto &middot; 80 ML</p>
+            <span class="chip">Oriental amaderado</span>
+            <p class="descripcion">Perfil oriental amaderado, cálido y envolvente.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias, cítricos. Corazón: flores, madera. Fondo: almizcle, ámbar.</p>
+            <div class="precio-box">$590.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Dior Farenheit EDT 200ml" alt="Dior Fahrenheit" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Dior</p>
+            <h3 class="nombre">Fahrenheit</h3>
+            <p class="meta">EDT &middot; 200 ML</p>
+            <span class="chip">Amaderado cuero</span>
+            <p class="descripcion">Icónico y audaz, con la característica nota de cuero y violeta.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: mandarina, lavanda. Corazón: violeta, cuero. Fondo: sándalo, almizcle, ámbar.</p>
+            <div class="precio-box">$790.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Dior Homme Intense EDP 100ml" alt="Dior Homme Intense" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Dior</p>
+            <h3 class="nombre">Homme Intense</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Amaderado polvoriento</span>
+            <p class="descripcion">Elegante y polvoriento, iris y cacao sobre un fondo amaderado profundo.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: lavanda, pimienta rosa. Corazón: iris, cacao. Fondo: vetiver, cedro, ámbar.</p>
+            <div class="precio-box">$690.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/DIOR SAUVAGE ELIXIR HM 100 ml.png" alt="Dior Sauvage Elixir" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Dior</p>
+            <h3 class="nombre">Sauvage Elixir</h3>
+            <p class="meta">Parfum &middot; 100 ML</p>
+            <span class="chip">Oriental especiado intenso</span>
+            <p class="descripcion">Versión más intensa y especiada de Sauvage, cálida y concentrada.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: canela, lavanda. Corazón: especias. Fondo: vainilla, haba tonka, ámbar.</p>
+            <div class="precio-box">$1.150.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/GAME OF SPADE BONUS UNISEX Eau de Parfum 100 ml.png" alt="Game Of Spade Bonus" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Game Of Spade</p>
+            <h3 class="nombre">Bonus</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado</span>
+            <p class="descripcion">Perfil oriental especiado, típico de las fragancias árabes de larga duración.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias, cítricos. Corazón: flores, oud. Fondo: ámbar, madera.</p>
+            <div class="precio-box">$450.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/GAME OF SPADE DOUBLE BONUS Parfum 100ml.png" alt="Game Of Spade Double Bonus" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Game Of Spade</p>
+            <h3 class="nombre">Double Bonus</h3>
+            <p class="meta">Parfum &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado intenso</span>
+            <p class="descripcion">Versión más concentrada e intensa de Bonus.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias intensas. Corazón: oud, ámbar. Fondo: madera, almizcle.</p>
+            <div class="precio-box">$450.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Giorgio Armani Di Aqcua EDT 100ml" alt="Giorgio Armani Acqua di Giò" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Giorgio Armani</p>
+            <h3 class="nombre">Acqua di Giò</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Acuático aromático</span>
+            <p class="descripcion">El acuático más icónico y versátil, fresco y mediterráneo.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: notas marinas, bergamota. Corazón: jazmín, romero. Fondo: musgo de roble, almizcle, cedro.</p>
+            <div class="precio-box">$410.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Hugo Boss the scent EDT 100ml" alt="Hugo Boss The Scent" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Hugo Boss</p>
+            <h3 class="nombre">The Scent</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático especiado</span>
+            <p class="descripcion">Seductor y cálido, contraste entre frescura y una base de cuero y tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: manzana, jengibre. Corazón: lavanda. Fondo: cuero, haba tonka.</p>
+            <div class="precio-box">$340.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ILMIN Il Azzurro Extracto 30ml.png" alt="ILMIN Il Azzurro" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">ILMIN</p>
+            <h3 class="nombre">Il Azzurro</h3>
+            <p class="meta">Extracto &middot; 30 ML</p>
+            <span class="chip">Acuático fresco</span>
+            <p class="descripcion">Fresco y acuático, extracto concentrado de la línea ILMIN.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos, notas marinas. Corazón: notas acuáticas. Fondo: almizcle, madera clara.</p>
+            <div class="precio-box">$550.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ILMIN Il Ego Extracto 30 ml.png" alt="ILMIN Il Ego" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">ILMIN</p>
+            <h3 class="nombre">Il Ego</h3>
+            <p class="meta">Extracto &middot; 30 ML</p>
+            <span class="chip">Amaderado especiado</span>
+            <p class="descripcion">Perfil amaderado especiado, intenso y personal.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: cuero, madera. Fondo: ámbar, almizcle.</p>
+            <div class="precio-box">$600.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ILMIN Il Erotique Extracto 30ml.png" alt="ILMIN Il Erotique" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">ILMIN</p>
+            <h3 class="nombre">Il Erotique</h3>
+            <p class="meta">Extracto &middot; 30 ML</p>
+            <span class="chip">Oriental especiado sensual</span>
+            <p class="descripcion">Sensual y cálido, especiado con fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias dulces. Corazón: ámbar, flores. Fondo: almizcle, madera.</p>
+            <div class="precio-box">$600.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ILMIN Il Femme Extracto 30ml.png" alt="ILMIN Il Femme" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">ILMIN</p>
+            <h3 class="nombre">Il Femme</h3>
+            <p class="meta">Extracto &middot; 30 ML</p>
+            <span class="chip">Floral dulce</span>
+            <p class="descripcion">Perfil floral dulce pese al nombre, parte de la línea de extractos ILMIN.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: flores, frutas. Corazón: jazmín. Fondo: almizcle, vainilla.</p>
+            <div class="precio-box">$800.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ILMIN Il Mexico Extracto 30ml.png" alt="ILMIN Il Mexico" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">ILMIN</p>
+            <h3 class="nombre">Il Mexico</h3>
+            <p class="meta">Extracto &middot; 30 ML</p>
+            <span class="chip">Amaderado especiado</span>
+            <p class="descripcion">Cálido y especiado, con un fondo amaderado profundo.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias, cítricos. Corazón: madera, tabaco. Fondo: ámbar, almizcle.</p>
+            <div class="precio-box">$600.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ILMIN Il Oomph Extracto 30ml.png" alt="ILMIN Il Oomph" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">ILMIN</p>
+            <h3 class="nombre">Il Oomph</h3>
+            <p class="meta">Extracto &middot; 30 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Intenso y masculino, oud y cuero sobre fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: cuero, oud. Fondo: ámbar, madera.</p>
+            <div class="precio-box">$600.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/JEAN PAUL GAULTIER LE BEAU PARADISE GARDEN HM Eau de Parfum 75 ml.png" alt="Jean Paul Gaultier Le Beau Paradise Garden" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Jean Paul Gaultier</p>
+            <h3 class="nombre">Le Beau Paradise Garden</h3>
+            <p class="meta">EDP &middot; 75 ML</p>
+            <span class="chip">Floral tropical gourmand</span>
+            <p class="descripcion">Tropical y dulce, coco y piña sobre un fondo de tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: piña, coco. Corazón: flor de ylang ylang. Fondo: haba tonka, madera.</p>
+            <div class="precio-box">$390.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/JEAN PAUL GAULTIER LE MALE ELIXIR HM 125ML.png" alt="Jean Paul Gaultier Le Male Elixir" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Jean Paul Gaultier</p>
+            <h3 class="nombre">Le Male Elixir</h3>
+            <p class="meta">Parfum &middot; 125 ML</p>
+            <span class="chip">Oriental gourmand intenso</span>
+            <p class="descripcion">Concentrado y adictivo, cacao y café sobre un fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: lavanda, vainilla. Corazón: cacao, café. Fondo: haba tonka, ámbar, madera.</p>
+            <div class="precio-box">$510.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/JEAN PAUL GAULTIER LE MALE LE PARFUM Eau de Parfum Intense HM 125 ml.png" alt="Jean Paul Gaultier Le Male Le Parfum Intense" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Jean Paul Gaultier</p>
+            <h3 class="nombre">Le Male Le Parfum Intense</h3>
+            <p class="meta">Parfum &middot; 125 ML</p>
+            <span class="chip">Oriental especiado dulce</span>
+            <p class="descripcion">Versión intensa de Le Male, dulce y ambarada.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: lavanda. Corazón: vainilla, especias. Fondo: haba tonka, ámbar.</p>
+            <div class="precio-box">$500.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/JEAN PAUL GAULTIER LE MALE LE PARFUM Eau de Parfum Intense HM 75 ml.png" alt="Jean Paul Gaultier Le Male Le Parfum Intense" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Jean Paul Gaultier</p>
+            <h3 class="nombre">Le Male Le Parfum Intense</h3>
+            <p class="meta">Parfum &middot; 75 ML</p>
+            <span class="chip">Oriental especiado dulce</span>
+            <p class="descripcion">Versión intensa de Le Male, dulce y ambarada.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: lavanda. Corazón: vainilla, especias. Fondo: haba tonka, ámbar.</p>
+            <div class="precio-box">$500.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/JEAN PAUL GAULTIER SCANDAL POUR HOMME Eau de Toilette HM 100 ml.png" alt="Jean Paul Gaultier Scandal Pour Homme" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Jean Paul Gaultier</p>
+            <h3 class="nombre">Scandal Pour Homme</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Fresco especiado dulce</span>
+            <p class="descripcion">Fresco y adictivo, con un fondo dulce y especiado de tonka y pachulí.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pomelo, menta. Corazón: lavanda, ciruela. Fondo: haba tonka, pachulí.</p>
+            <div class="precio-box">$450.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/JEAN PAUL LE BEAU LE PARFUM Eau de Parfum Intense 125ml.png" alt="Jean Paul Gaultier Le Beau Le Parfum Intense" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Jean Paul Gaultier</p>
+            <h3 class="nombre">Le Beau Le Parfum Intense</h3>
+            <p class="meta">Parfum &middot; 125 ML</p>
+            <span class="chip">Floral tropical gourmand intenso</span>
+            <p class="descripcion">Versión más intensa de Le Beau, tropical y dulce.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: piña, coco. Corazón: ylang ylang. Fondo: haba tonka, madera, ámbar.</p>
+            <div class="precio-box">$510.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/JEAN PAUL SCANDAL LE PARFUM HM Eau de Parfum 100 ml.png" alt="Jean Paul Gaultier Scandal Le Parfum" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Jean Paul Gaultier</p>
+            <h3 class="nombre">Scandal Le Parfum</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Fresco especiado dulce intenso</span>
+            <p class="descripcion">Versión más concentrada de Scandal Pour Homme.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pomelo. Corazón: lavanda, ciruela. Fondo: haba tonka, pachulí, ámbar.</p>
+            <div class="precio-box">$480.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/KAJAL LAMAR UNISEX Eau de Parfum 100ml.png" alt="Kajal Lamar" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Kajal</p>
+            <h3 class="nombre">Lamar</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado</span>
+            <p class="descripcion">Perfil oriental amaderado, cálido y de buena proyección.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias, cítricos. Corazón: flores, madera. Fondo: ámbar, almizcle.</p>
+            <div class="precio-box">$1.190.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/KORBAJ MUSKY SIGNATURE EXTRACTO 100ml.png" alt="Korbaj Musky Signature" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Korbaj</p>
+            <h3 class="nombre">Musky Signature</h3>
+            <p class="meta">Extracto &middot; 100 ML</p>
+            <span class="chip">Almizclado amaderado</span>
+            <p class="descripcion">Centrado en almizcle, cálido y envolvente, de larga duración.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: almizcle. Fondo: madera, ámbar.</p>
+            <div class="precio-box">$390.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/KORBAJ TOXIC DESIRE HM EXTRACTO 100ml.png" alt="Korbaj Toxic Desire" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Korbaj</p>
+            <h3 class="nombre">Toxic Desire</h3>
+            <p class="meta">Extracto &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado intenso</span>
+            <p class="descripcion">Intenso y seductor, oud y ámbar sobre fondo amaderado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias dulces. Corazón: oud, ámbar. Fondo: madera, almizcle.</p>
+            <div class="precio-box">$400.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/LATAFFA AL QIAM GOLD HM Eau de Parfum 100 ml.png" alt="Lattafa Al Qiam Gold" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Al Qiam Gold</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Oriental amaderado con oud y azafrán, lujoso y potente.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: azafrán, especias. Corazón: oud, rosa. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$210.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/LATAFFA OUD FOR GLORY Unisex Eau de Parfum 100ml.png" alt="Lattafa Oud For Glory" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Oud For Glory</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Oud clásico árabe, cálido y de gran proyección.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: oud, rosa. Fondo: ámbar, madera.</p>
+            <div class="precio-box">$180.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Lattafa Asad Bourbon" alt="Lattafa Asad Bourbon" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Asad Bourbon</h3>
+            <p class="meta">Confirmar &middot; Confirmar</p>
+            <span class="chip">Oriental amaderado especiado</span>
+            <p class="descripcion">Cálido y especiado con acordes de licor y tabaco, típico de la línea Asad.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: whisky, especias. Corazón: cuero, tabaco. Fondo: ámbar, madera.</p>
+            <div class="precio-box">$230.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Lattafa Asad Elixir EDP 100ml" alt="Lattafa Asad Elixir" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Asad Elixir</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado especiado</span>
+            <p class="descripcion">Especiado e intenso, con cuero y oud sobre un fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: canela, especias. Corazón: cuero, oud. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$230.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/LATTAFA ASAD HM Eau de Parfum 100ml.png" alt="Lattafa Asad" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Asad</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado especiado</span>
+            <p class="descripcion">Especiado y amaderado, línea Asad de Lattafa.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias, cítricos. Corazón: cuero, oud. Fondo: ámbar, madera.</p>
+            <div class="precio-box">$179.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/LATTAFA FAKHAR SILVER HM Eau de Parfum 100ml.png" alt="Lattafa Fakhar Silver" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Fakhar Silver</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Aromático amaderado fresco</span>
+            <p class="descripcion">Fresco y amaderado, versión 'plateada' de la línea Fakhar.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos, especias. Corazón: flores, madera. Fondo: almizcle, ámbar.</p>
+            <div class="precio-box">$250.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Lattafa Khamraff EDP 100ml" alt="Lattafa Khamrah" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Khamrah</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental especiado gourmand</span>
+            <p class="descripcion">Cálido y navideño, especias dulces sobre un fondo ambarado y goloso.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: canela, nuez moscada, pimienta. Corazón: dátil, praliné. Fondo: vainilla, ámbar, madera.</p>
+            <div class="precio-box">$189.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/LOEWE 7 HM Eau de toilette 100ml.png" alt="Loewe 7" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Loewe</p>
+            <h3 class="nombre">7</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Amaderado especiado cuero</span>
+            <p class="descripcion">Elegante y especiado, con un característico fondo de cuero.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cardamomo, azafrán. Corazón: violeta. Fondo: cuero, ámbar, cedro.</p>
+            <div class="precio-box">$490.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/LORENZO PAZZAGLIA BLACK SEA HM EXTRAIT 50 ml.png" alt="Lorenzo Pazzaglia Black Sea" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lorenzo Pazzaglia</p>
+            <h3 class="nombre">Black Sea</h3>
+            <p class="meta">Extrait &middot; 50 ML</p>
+            <span class="chip">Acuático ambarado</span>
+            <p class="descripcion">Fresco y misterioso, notas marinas sobre un fondo ambarado; nicho italiano.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: notas marinas, especias. Corazón: ámbar. Fondo: madera, almizcle.</p>
+            <div class="precio-box">$979.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/MARLY PARFUMS ALTHAÏR HM Eau de Parfum 125 ml.png" alt="Parfums de Marly Althaïr" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Parfums de Marly</p>
+            <h3 class="nombre">Althaïr</h3>
+            <p class="meta">EDP &middot; 125 ML</p>
+            <span class="chip">Aromático especiado dulce</span>
+            <p class="descripcion">Elegante y fresco, con un fondo cálido de vainilla y cuero; nicho francés.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, pimienta rosa. Corazón: geranio, vainilla. Fondo: haba tonka, ámbar, cuero.</p>
+            <div class="precio-box">$1.290.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/MONTALE ARABIANS TONKA Eau de Parfum 100 ml.png" alt="Montale Arabians Tonka" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Montale</p>
+            <h3 class="nombre">Arabians Tonka</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental gourmand especiado</span>
+            <p class="descripcion">Cálido y dulce, tonka y especias sobre un fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: haba tonka. Fondo: ámbar, vainilla, madera.</p>
+            <div class="precio-box">$550.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/MONTALE INTENSE CAFÉ Eau de Parfum 100 ml.png" alt="Montale Intense Café" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Montale</p>
+            <h3 class="nombre">Intense Café</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental gourmand café</span>
+            <p class="descripcion">Intenso y adictivo, café y cacao sobre un fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: café. Corazón: cacao, especias. Fondo: vainilla, ámbar, madera.</p>
+            <div class="precio-box">$480.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/MONTALE STARRY NIGHTS Eau de Parfum 100ml.png" alt="Montale Starry Nights" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Montale</p>
+            <h3 class="nombre">Starry Nights</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Nocturno y misterioso, oud y azafrán con fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: azafrán, especias. Corazón: rosa, oud. Fondo: ámbar, madera, vainilla.</p>
+            <div class="precio-box">$460.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/MOSCHINO TOY BOY Eau de Parfum 100ml.png" alt="Moschino Toy Boy" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Moschino</p>
+            <h3 class="nombre">Toy Boy</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Floral especiado dulce</span>
+            <p class="descripcion">Original y audaz, floral especiado con un fondo dulce de tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cardamomo. Corazón: flor de naranjo. Fondo: haba tonka, ámbar, almizcle.</p>
+            <div class="precio-box">$295.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/MUNDUS BURJ KALIFA UNISEX EXTRAIT 50ml.png" alt="Mundus Burj Khalifa" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Mundus</p>
+            <h3 class="nombre">Burj Khalifa</h3>
+            <p class="meta">Extrait &middot; 50 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Lujoso y oriental, oud y azafrán inspirado en el icónico rascacielos.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias, azafrán. Corazón: oud, rosa. Fondo: ámbar, madera.</p>
+            <div class="precio-box">$250.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Nitro Black Intense 3.4 EDP" alt="Nitro Black Intense" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Nitro</p>
+            <h3 class="nombre">Black Intense</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Amaderado especiado intenso</span>
+            <p class="descripcion">Intenso y masculino, especiado con fondo de cuero y madera oscura.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, pimienta negra. Corazón: especias, cuero. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$240.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ORIENTICA OUD SAFFRON Eau de Parfum 80ml.png" alt="Orientica Oud Saffron" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Orientica</p>
+            <h3 class="nombre">Oud Saffron</h3>
+            <p class="meta">EDP &middot; 80 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Oud y azafrán clásico, cálido y de larga duración.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: azafrán. Corazón: oud, rosa. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$400.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/ORIENTICA ROYAL AMBER Eau de Parfum 80ml.png" alt="Orientica Royal Amber" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Orientica</p>
+            <h3 class="nombre">Royal Amber</h3>
+            <p class="meta">EDP &middot; 80 ML</p>
+            <span class="chip">Oriental ambarado</span>
+            <p class="descripcion">Cálido y envolvente, centrado en ámbar y especias.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: ámbar, flores. Fondo: madera, almizcle.</p>
+            <div class="precio-box">$390.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Paco Rabanne Black Xs  EDT 100ml" alt="Paco Rabanne Black XS" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Paco Rabanne</p>
+            <h3 class="nombre">Black XS</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático especiado</span>
+            <p class="descripcion">Rebelde y magnético, café y especias sobre un fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: menta, jengibre. Corazón: café, salvia. Fondo: ámbar, cacao, cedro.</p>
+            <div class="precio-box">$340.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Paco Rabanne Invictus edt 200ml" alt="Paco Rabanne Invictus" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Paco Rabanne</p>
+            <h3 class="nombre">Invictus</h3>
+            <p class="meta">EDT &middot; 200 ML</p>
+            <span class="chip">Acuático amaderado</span>
+            <p class="descripcion">Fresco y deportivo, acuático con un fondo amaderado y ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pomelo, notas marinas. Corazón: laurel, jazmín. Fondo: ámbar, musgo, madera.</p>
+            <div class="precio-box">$410.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Paco Rabanne Invictus Legend EDP 100ml" alt="Paco Rabanne Invictus Legend" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Paco Rabanne</p>
+            <h3 class="nombre">Invictus Legend</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Aromático dulce intenso</span>
+            <p class="descripcion">Versión más intensa y dulce de Invictus, con tonka y un fondo de cuero.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: lavanda, manzana. Corazón: haba tonka, salvia. Fondo: pachulí, ámbar, cuero.</p>
+            <div class="precio-box">$420.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Paco Rabanne Invictus Victory  100ml EDP .png" alt="Paco Rabanne Invictus Victory" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Paco Rabanne</p>
+            <h3 class="nombre">Invictus Victory</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Aromático amaderado dulce</span>
+            <p class="descripcion">Potente y victorioso, tonka y salvia sobre una base amaderada intensa.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: laurel, romero. Corazón: haba tonka, salvia ambarada. Fondo: pachulí, madera de guayaco.</p>
+            <div class="precio-box">$480.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Paco Rabanne One Million EDT 100ml" alt="Paco Rabanne One Million" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Paco Rabanne</p>
+            <h3 class="nombre">One Million</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Amaderado especiado dulce</span>
+            <p class="descripcion">Icónico y llamativo, especias dulces sobre un fondo de cuero.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pomelo, menta, sangre de drago. Corazón: canela, especias. Fondo: cuero, ámbar, madera.</p>
+            <div class="precio-box">$330.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Prada Luna Rossa EDT 100ml" alt="Prada Luna Rossa" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Prada</p>
+            <h3 class="nombre">Luna Rossa</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático fresco</span>
+            <p class="descripcion">Deportivo y fresco, aromático con un fondo suave y limpio.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: lavanda, limón. Corazón: notas aromáticas. Fondo: almizcle, ámbar.</p>
+            <div class="precio-box">$490.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/RABANNE PHANTOM HM Eau de Toilette 100 ml.png" alt="Paco Rabanne Phantom" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Paco Rabanne</p>
+            <h3 class="nombre">Phantom</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático fresco tecnológico</span>
+            <p class="descripcion">Fresco e innovador, con una firma aromática limpia y moderna.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: manzana, lavanda. Corazón: notas verdes. Fondo: almizcle, madera, ámbar.</p>
+            <div class="precio-box">$420.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Valentino Uomo Born In Roma Edp 100ml" alt="Valentino Born in Roma (Uomo)" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Valentino</p>
+            <h3 class="nombre">Born in Roma (Uomo)</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Amaderado especiado</span>
+            <p class="descripcion">Urbano y magnético, especiado con fondo de cuero y ámbar.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: bergamota, notas metálicas. Corazón: nuez moscada, salvia. Fondo: ámbar, cedro, cuero.</p>
+            <div class="precio-box">$590.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Versace Dylan Blue EDT 100ml" alt="Versace Dylan Blue" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Versace</p>
+            <h3 class="nombre">Dylan Blue</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático acuático</span>
+            <p class="descripcion">Fresco y moderno, con ambroxan y un fondo amaderado limpio.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: toronja, manzana. Corazón: violeta, ambroxan. Fondo: pachulí, cedro.</p>
+            <div class="precio-box">$310.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Versace Eros EDT 100ml" alt="Versace Eros" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Versace</p>
+            <h3 class="nombre">Eros</h3>
+            <p class="meta">EDT &middot; 100 ML</p>
+            <span class="chip">Aromático fresco dulce</span>
+            <p class="descripcion">Potente y fresco, con tonka y vainilla sobre un fondo amaderado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: menta, manzana verde. Corazón: haba tonka, ambroxan. Fondo: vainilla, cedro, musgo de roble.</p>
+            <div class="precio-box">$329.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/VERSACE EROS ENERGY HM Eau de Parfum 100ml.png" alt="Versace Eros Energy" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Versace</p>
+            <h3 class="nombre">Eros Energy</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Aromático fresco intenso</span>
+            <p class="descripcion">Versión energizante de Eros, fresca y vibrante.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pomelo, jengibre. Corazón: geranio, salvia. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$390.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/VERSACE EROS FLAME Eau de Parfum 100ml.png" alt="Versace Eros Flame" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Versace</p>
+            <h3 class="nombre">Eros Flame</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Aromático especiado dulce</span>
+            <p class="descripcion">Versión más cálida e intensa de Eros, especiada y ambarada.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pimienta negra, mandarina. Corazón: geranio, lavanda. Fondo: vainilla, ámbar, cachemira.</p>
+            <div class="precio-box">$339.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/Viktor Rolf Spicebomb EDT 90ml" alt="Viktor &amp; Rolf Spicebomb" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Viktor &amp; Rolf</p>
+            <h3 class="nombre">Spicebomb</h3>
+            <p class="meta">EDT &middot; 90 ML</p>
+            <span class="chip">Especiado amaderado</span>
+            <p class="descripcion">Explosivo y especiado, canela y tabaco sobre un fondo de cuero.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: pomelo rosa, pimienta rosa. Corazón: canela, azafrán. Fondo: tabaco, cuero, vetiver.</p>
+            <div class="precio-box">$340.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="CABALLERO/YVES SAINt Laurent EDP 100ml" alt="Yves Saint Laurent Y Eau de Parfum" loading="lazy">
+            <span class="tag-genero">Caballero</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Yves Saint Laurent</p>
+            <h3 class="nombre">Y Eau de Parfum</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Por confirmar</span>
+            <p class="descripcion">El archivo no especifica qué fragancia de YSL es.</p>
+            <p class="notas"><strong>Notas:</strong> Por confirmar según fragancia exacta.</p>
+            <div class="precio-box">$650.000</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </div>
+  </div>
+  <div id="unisex">
+  <div class="gender-block">
+    <h1 class="gender-title">Unisex</h1>
+    <div class="gender-rule"></div>
+    <section>
+      <div class="grid">
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/ILMIN Il Orgasme Extracto Unisex 30ml.png" alt="ILMIN Il Orgasme" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">ILMIN</p>
+            <h3 class="nombre">Il Orgasme</h3>
+            <p class="meta">Extracto &middot; 30 ML</p>
+            <span class="chip">Oriental ambarado sensual</span>
+            <p class="descripcion">Sensual y envolvente, especiado con fondo ambarado.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias dulces. Corazón: flores, ámbar. Fondo: almizcle, madera.</p>
+            <div class="precio-box">$600.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/JEAN PAUL LE BEAU LE PARFUM HM 75ml.png" alt="Jean Paul Gaultier Le Beau Le Parfum" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Jean Paul Gaultier</p>
+            <h3 class="nombre">Le Beau Le Parfum</h3>
+            <p class="meta">Parfum &middot; 75 ML</p>
+            <span class="chip">Floral tropical gourmand</span>
+            <p class="descripcion">Tropical y dulce, coco y piña sobre un fondo de tonka.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: piña, coco. Corazón: ylang ylang. Fondo: haba tonka, madera.</p>
+            <div class="precio-box">$395.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/KAJAL ALMAZ UNISEX Eau de Parfum 100ml.png" alt="Kajal Almaz" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Kajal</p>
+            <h3 class="nombre">Almaz</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado</span>
+            <p class="descripcion">Perfil oriental amaderado, cálido y unisex.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias, cítricos. Corazón: flores, oud. Fondo: ámbar, madera.</p>
+            <div class="precio-box">$1.190.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/LATTAFA ART OF UNIVERSE UNISEX Eau de Parfum 100 ml.png" alt="Lattafa Art of Universe" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Art of Universe</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado oud</span>
+            <p class="descripcion">Oriental amaderado, cálido y de gran proyección.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: azafrán, cítricos. Corazón: rosa, oud. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$280.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/LATTAFA SHAHEEN GOLD UNISEX Eau de Parfum 100 ml.png" alt="Lattafa Shaheen Gold" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lattafa</p>
+            <h3 class="nombre">Shaheen Gold</h3>
+            <p class="meta">EDP &middot; 100 ML</p>
+            <span class="chip">Oriental amaderado</span>
+            <p class="descripcion">Similar a la línea Pride Shaheen Gold ya existente; confirmar si es el mismo producto.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: azafrán, cítricos. Corazón: rosa, oud. Fondo: ámbar, almizcle.</p>
+            <div class="precio-box">$198.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/LORENZO PAZZAGLIA SUN-GRIA UNISEX EXTRAIT 50 ML.png" alt="Lorenzo Pazzaglia Sun-Gria" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Lorenzo Pazzaglia</p>
+            <h3 class="nombre">Sun-Gria</h3>
+            <p class="meta">Extrait &middot; 50 ML</p>
+            <span class="chip">Frutal floral fresco</span>
+            <p class="descripcion">Fresco y afrutado, ligero y veraniego; nicho italiano.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: frutas rojas, cítricos. Corazón: flores. Fondo: almizcle, madera clara.</p>
+            <div class="precio-box">$979.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/MFK BACCARAT ROUGE 540 UNISEX EXTRACTO 70ml.png" alt="Maison Francis Kurkdjian Baccarat Rouge 540" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Maison Francis Kurkdjian</p>
+            <h3 class="nombre">Baccarat Rouge 540</h3>
+            <p class="meta">Extracto &middot; 70 ML</p>
+            <span class="chip">Ambarado floral icónico</span>
+            <p class="descripcion">Uno de los perfumes de nicho más icónicos y reconocibles, ambarado y luminoso.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: azafrán, jazmín. Corazón: ámbar gris. Fondo: madera de cedro, almizcle.</p>
+            <div class="precio-box">$2.290.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/MUNDUS CHICHÉN ITZÁ UNISEX EXTRAIT 50 ml.png" alt="Mundus Chichén Itzá" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Mundus</p>
+            <h3 class="nombre">Chichén Itzá</h3>
+            <p class="meta">Extrait &middot; 50 ML</p>
+            <span class="chip">Oriental amaderado</span>
+            <p class="descripcion">Cálido y místico, inspirado en la cultura maya.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: especias. Corazón: madera, ámbar. Fondo: almizcle, oud.</p>
+            <div class="precio-box">$212.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/ORIENTICA ROYAL BLEU UNISEX Eau de Parfum 80 ml.png" alt="Orientica Royal Bleu" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Orientica</p>
+            <h3 class="nombre">Royal Bleu</h3>
+            <p class="meta">EDP &middot; 80 ML</p>
+            <span class="chip">Acuático ambarado</span>
+            <p class="descripcion">Fresco y ambarado, versátil y de larga duración.</p>
+            <p class="notas"><strong>Notas:</strong> Salida: cítricos, especias. Corazón: notas acuáticas. Fondo: ámbar, madera, almizcle.</p>
+            <div class="precio-box">$290.000</div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img">
+            <img src="UNISEX/ORIENTICA SET MINI UNISEX X5.png" alt="Orientica Set Mini (x5)" loading="lazy">
+            <span class="tag-genero">Unisex</span>
+          </div>
+          <div class="card-body">
+            <p class="marca">Orientica</p>
+            <h3 class="nombre">Set Mini (x5)</h3>
+            <p class="meta">- &middot; Set x5</p>
+            <span class="chip">Variado</span>
+            <p class="descripcion">Set de 5 miniaturas de la línea Orientica para descubrir distintos perfiles.</p>
+            <p class="notas"><strong>Notas:</strong> Variado según la fragancia.</p>
+            <div class="precio-box">$230.000</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </div>
+  </div>
+  <p class="no-results" id="noResults">No encontramos ningún perfume con ese término. Intenta con otra marca o palabra.</p>
+</main>
+
+<footer>VIIENA Perfumería &mdash; Catálogo en construcción</footer>
+
+<script>
+(function(){
+  function normalize(s){
+    return (s || '').toLowerCase()
+      .replace(/[áàäâ]/g,'a').replace(/[éèëê]/g,'e').replace(/[íìïî]/g,'i')
+      .replace(/[óòöô]/g,'o').replace(/[úùüû]/g,'u').replace(/ñ/g,'n');
+  }
+  const input = document.getElementById('searchInput');
+  const noResults = document.getElementById('noResults');
+  const countLabel = document.getElementById('searchCount');
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const sections = Array.from(document.querySelectorAll('main section'));
+  const genderBlocks = Array.from(document.querySelectorAll('.gender-block'));
+  const totalCount = cards.length;
+
+  function applyFilter(){
+    const q = normalize(input.value.trim());
+    let visibleCount = 0;
+
+    cards.forEach(function(card){
+      const text = normalize(card.querySelector('.card-body').textContent);
+      const match = q === '' || text.indexOf(q) !== -1;
+      card.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
+    });
+
+    sections.forEach(function(sec){
+      const anyVisible = Array.from(sec.querySelectorAll('.card')).some(function(c){ return c.style.display !== 'none'; });
+      sec.style.display = anyVisible ? '' : 'none';
+    });
+
+    genderBlocks.forEach(function(gb){
+      const anyVisible = Array.from(gb.querySelectorAll('.card')).some(function(c){ return c.style.display !== 'none'; });
+      gb.style.display = anyVisible ? '' : 'none';
+    });
+
+    noResults.style.display = (q !== '' && visibleCount === 0) ? 'block' : 'none';
+    countLabel.textContent = q === '' ? '' : (visibleCount + ' de ' + totalCount + ' resultados');
+  }
+
+  input.addEventListener('input', applyFilter);
+})();
+</script>
+
+</body>
+</html>
