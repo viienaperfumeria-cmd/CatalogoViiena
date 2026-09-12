@@ -110,11 +110,16 @@ body{
   background:#fff;border-radius:18px;overflow:hidden;
   border:1px solid rgba(74,11,21,.08);
   box-shadow:0 2px 18px rgba(45,10,1,.05);
-  opacity:0;transform:translateY(34px);
+
   transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1), box-shadow .35s ease;
   will-change:transform,opacity;
 }
 .card.visible{opacity:1;transform:none;}
+/* Las tarjetas solo nacen ocultas si el script arranco bien y marco el body.
+   Si el JavaScript falla, el catalogo se ve igual: un efecto visual nunca
+   debe poder esconder el inventario completo. */
+body.anim .card{opacity:0;transform:translateY(34px);}
+body.anim .card.visible{opacity:1;transform:none;}
 .card.oculta{display:none;}
 .card-media{position:relative;background:#fff;aspect-ratio:1;overflow:hidden;
   transform-style:preserve-3d;}
@@ -9654,6 +9659,7 @@ body{
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) { document.body.classList.add('anim'); }
 
   /* --- capas de la portada a distinta velocidad --- */
   var capas = [].slice.call(document.querySelectorAll('.hero [data-speed]'));
@@ -9796,6 +9802,13 @@ body{
       aplicar();
     });
   });
+
+  /* Red de seguridad: a los 2,5 segundos, toda tarjeta que siga oculta
+     se muestra. Mejor sin animacion que sin catalogo. */
+  setTimeout(function(){
+    var faltan = document.querySelectorAll('.card:not(.visible)');
+    for (var i=0;i<faltan.length;i++){ faltan[i].classList.add('visible'); }
+  }, 2500);
 })();
 </script>
 </body>
