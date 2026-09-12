@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIIENA — Prueba visual</title>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Poppins:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#4A0B15;
+  --wine-soft:#6B1B28;
+  --cream:#F8EFE5;
+  --pink:#FFBDC5;
+  --ink:#2D0A01;
+  --gold:#C9A96E;
+  --hairline:rgba(74,11,21,0.16);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;padding:0;background:var(--cream);color:var(--ink);
+  font-family:'Poppins',sans-serif;overflow-x:hidden;
+}
+
+/* ---------------- PORTADA ---------------- */
+.hero{
+  position:relative;height:100vh;min-height:560px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:radial-gradient(120% 100% at 50% 0%, #6B1B28 0%, #4A0B15 45%, #2D0A01 100%);
+}
+/* capas que se mueven a distinta velocidad */
+.layer{position:absolute;inset:0;will-change:transform;pointer-events:none;}
+.glow{
+  width:80vmin;height:80vmin;left:50%;top:46%;position:absolute;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle, rgba(255,189,197,0.30) 0%, rgba(201,169,110,0.14) 38%, transparent 68%);
+  filter:blur(12px);
+}
+.hero-word{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,22vw,20rem);
+  line-height:.8;letter-spacing:.04em;color:rgba(248,239,229,.10);
+  white-space:nowrap;user-select:none;
+}
+.hero-bottle{
+  position:relative;z-index:3;height:min(62vh,540px);
+  filter:drop-shadow(0 40px 70px rgba(0,0,0,.55));
+  will-change:transform;
+}
+.hero-copy{position:absolute;z-index:4;left:50%;bottom:12vh;transform:translateX(-50%);text-align:center;width:92%;}
+.hero-copy .k{
+  font-family:'Bebas Neue',sans-serif;letter-spacing:.42em;
+  font-size:clamp(.7rem,1.3vw,.95rem);color:var(--gold);margin:0 0 .8rem;
+}
+.hero-copy h1{
+  font-family:'Prata',serif;font-weight:400;margin:0;
+  font-size:clamp(1.9rem,5.2vw,3.6rem);color:var(--cream);line-height:1.12;
+}
+.hero-copy p{
+  margin:1rem auto 0;max-width:42ch;color:rgba(248,239,229,.72);
+  font-weight:300;font-size:clamp(.9rem,1.5vw,1.05rem);
+}
+.scroll-hint{
+  position:absolute;z-index:5;left:50%;bottom:3.2vh;transform:translateX(-50%);
+  color:rgba(248,239,229,.5);font-size:.7rem;letter-spacing:.3em;
+  font-family:'Bebas Neue',sans-serif;text-align:center;
+}
+.scroll-hint span{display:block;width:1px;height:46px;margin:.7rem auto 0;
+  background:linear-gradient(rgba(248,239,229,.55),transparent);animation:desliza 2.2s ease-in-out infinite;}
+@keyframes desliza{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ------------- SECCION FIJA (destacado) ------------- */
+.pin-wrap{position:relative;height:260vh;background:var(--ink);}
+.pin{position:sticky;top:0;height:100vh;display:grid;
+  grid-template-columns:1fr 1fr;align-items:center;gap:2rem;
+  padding:0 clamp(1.2rem,6vw,7rem);overflow:hidden;}
+.pin-media{display:flex;justify-content:center;align-items:center;position:relative;}
+.pin-media::after{
+  content:'';position:absolute;width:62%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,110,.24),transparent 66%);filter:blur(6px);
+}
+.pin-media img{position:relative;z-index:2;max-height:64vh;width:auto;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.6));will-change:transform;}
+.pin-text{color:var(--cream);}
+.pin-step{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
+.pin-step.on{opacity:1;transform:none;}
+.pin-step .k{font-family:'Bebas Neue',sans-serif;letter-spacing:.4em;color:var(--gold);font-size:.8rem;margin:0 0 .7rem;}
+.pin-step h2{font-family:'Prata',serif;font-weight:400;font-size:clamp(1.5rem,3.4vw,2.6rem);margin:0 0 .9rem;line-height:1.2;}
+.pin-step p{margin:0;color:rgba(248,239,229,.7);font-weight:300;line-height:1.75;max-width:46ch;}
+.pin-precio{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3.6vw,2.6rem);color:var(--gold);letter-spacing:.05em;margin-top:1.4rem;}
+
+/* ---------------- CATALOGO ---------------- */
+.catalogo{padding:clamp(4rem,10vw,9rem) clamp(1rem,5vw,5rem) 8rem;}
+.cat-head{text-align:center;margin-bottom:clamp(2.5rem,6vw,5rem);}
+.cat-head .k{font-family:'Bebas Neue',sans-serif;letter-spacing:.42em;color:var(--wine-soft);font-size:.8rem;margin:0 0 .7rem;}
+.cat-head h2{font-family:'Prata',serif;font-weight:400;font-size:clamp(1.7rem,4.4vw,3rem);margin:0;color:var(--wine);}
+.filtros{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem;}
+.filtros button{
+  border:1px solid var(--hairline);background:transparent;color:var(--wine);
+  font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:.85rem;
+  padding:.55rem 1.4rem;border-radius:999px;cursor:pointer;transition:.25s;
+}
+.filtros button:hover{border-color:var(--wine);}
+.filtros button[aria-pressed="true"]{background:var(--wine);color:var(--cream);border-color:var(--wine);}
+
+.grid{display:grid;gap:clamp(1.6rem,3vw,2.6rem);max-width:1320px;margin:0 auto;
+  grid-template-columns:repeat(auto-fill,minmax(265px,1fr));}
+
+.card{
+  background:#fff;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(74,11,21,.08);
+  box-shadow:0 2px 18px rgba(45,10,1,.05);
+  opacity:0;transform:translateY(34px);
+  transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1), box-shadow .35s ease;
+  will-change:transform,opacity;
+}
+.card.visible{opacity:1;transform:none;}
+.card.oculta{display:none;}
+.card-media{position:relative;background:#fff;aspect-ratio:1;overflow:hidden;
+  transform-style:preserve-3d;}
+.card-media img{width:100%;height:100%;object-fit:contain;padding:10%;
+  transition:transform .6s cubic-bezier(.22,.61,.36,1);will-change:transform;}
+.card:hover .card-media img{transform:scale(1.07) translateZ(40px);}
+.gtag{position:absolute;top:12px;left:12px;font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.18em;font-size:.66rem;color:var(--wine);background:rgba(248,239,229,.9);
+  padding:.28rem .7rem;border-radius:999px;}
+.card-info{padding:1.1rem 1.3rem 1.5rem;}
+.c-marca{margin:0 0 .15rem;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wine-soft);}
+.c-nombre{margin:0 0 .35rem;font-family:'Prata',serif;font-weight:400;font-size:1.12rem;color:var(--ink);line-height:1.3;}
+.c-meta{margin:0 0 .7rem;font-size:.72rem;color:rgba(45,10,1,.5);letter-spacing:.08em;}
+.c-chip{display:inline-block;font-size:.66rem;letter-spacing:.1em;padding:.28rem .7rem;
+  border:1px solid var(--hairline);border-radius:999px;color:var(--wine);margin-bottom:.7rem;}
+.c-notas{margin:0 0 1rem;font-size:.76rem;line-height:1.6;color:rgba(45,10,1,.62);font-weight:300;}
+.c-precio{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;color:var(--wine);}
+
+.aviso{max-width:760px;margin:0 auto;padding:2.4rem clamp(1rem,5vw,2rem) 5rem;text-align:center;
+  color:rgba(45,10,1,.55);font-size:.82rem;line-height:1.8;font-weight:300;}
+.aviso strong{color:var(--wine);font-weight:500;}
+
+@media (max-width:860px){
+  .pin{grid-template-columns:1fr;text-align:center;gap:1.2rem;}
+  .pin-media img{max-height:38vh;}
+  .pin-text{padding-bottom:2rem;}
+  .pin-step p{margin:0 auto;}
+  .pin-wrap{height:230vh;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .card{opacity:1;transform:none;transition:none;}
+  .pin-step{opacity:1;transform:none;}
+  .scroll-hint span{animation:none;}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="layer" data-speed="0.12"><div class="glow"></div></div>
+  <div class="layer" data-speed="0.30"><div class="hero-word">VIIENA</div></div>
+  <img class="hero-bottle" data-speed="0.55" src="demo-img/christian-dior-sauvage.webp" alt="">
+  <div class="hero-copy layer" data-speed="0.18">
+    <p class="k">PERFUMERÍA · MEDELLÍN</p>
+    <h1>El aroma es lo primero<br>que recuerdan de ti</h1>
+    <p>Fragancias originales, árabes y de nicho. Más de seiscientas referencias.</p>
+  </div>
+  <div class="scroll-hint">BAJA<span></span></div>
+</section>
+
+<div class="pin-wrap">
+  <div class="pin">
+    <div class="pin-media"><img id="pinImg" src="demo-img/maison-francis-kurkdjian-baccarat-rouge-540.jpg" alt="Maison Francis Kurkdjian Baccarat Rouge 540"></div>
+    <div class="pin-text">
+      <div class="pin-step" data-step="0">
+        <p class="k">DESTACADO</p>
+        <h2>Maison Francis Kurkdjian<br>Baccarat Rouge 540</h2>
+        <p>Una de las fragancias más reconocidas del mundo. Luminosa, envolvente y con una estela que permanece.</p>
+      </div>
+      <div class="pin-step" data-step="1">
+        <p class="k">SU COMPOSICIÓN</p>
+        <h2>Cómo se abre<br>y cómo termina</h2>
+        <p>Salida: azafrán, jazmín. Corazón: ámbar gris. Fondo: madera de cedro, almizcle.</p>
+      </div>
+      <div class="pin-step" data-step="2">
+        <p class="k">DISPONIBLE</p>
+        <h2>Llévala contigo</h2>
+        <p>Entrega en toda Colombia. Producto original, con garantía.</p>
+        <div class="pin-precio">$2.290.000</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="catalogo">
+  <div class="cat-head">
+    <p class="k">COLECCIÓN</p>
+    <h2>Encuentra la tuya</h2>
+    <div class="filtros" role="group" aria-label="Filtrar por género">
+      <button data-f="todos" aria-pressed="true">Todos</button>
+      <button data-f="Dama" aria-pressed="false">Dama</button>
+      <button data-f="Caballero" aria-pressed="false">Caballero</button>
+      <button data-f="Unisex" aria-pressed="false">Unisex</button>
+    </div>
+  </div>
+  <div class="grid" id="grid">
+      <article class="card" data-gen="Dama">
+        <div class="card-media">
+          <img src="demo-img/another-lab-rioh.jpg" alt="Another Lab Rioh" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Another Lab</p>
+          <h3 class="c-nombre">Rioh</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral cítrico</span>
+          <p class="c-notas">Salida: cítricos. Corazón: floral blanco. Fondo: almizcle, madera clara.</p>
+          <div class="c-precio">$380.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama">
+        <div class="card-media">
+          <img src="demo-img/ariana-grande-cloud.jpg" alt="Ariana Grande Cloud" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Ariana Grande</p>
+          <h3 class="c-nombre">Cloud</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Gourmand floral dulce</span>
+          <p class="c-notas">Salida: pera, coco. Corazón: crema de almendra, orquídea. Fondo: praliné, almizcle.</p>
+          <div class="c-precio">$329.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama">
+        <div class="card-media">
+          <img src="demo-img/ariana-grande-cloud-pink.jpg" alt="Ariana Grande Cloud Pink" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Ariana Grande</p>
+          <h3 class="c-nombre">Cloud Pink</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral frutal dulce</span>
+          <p class="c-notas">Salida: frambuesa, pera. Corazón: jazmín, flor de cerezo. Fondo: almizcle cremoso, vainilla.</p>
+          <div class="c-precio">$310.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama">
+        <div class="card-media">
+          <img src="demo-img/armaf-art-d-amour.jpg" alt="Armaf Art D'Amour" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Art D'Amour</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral gourmand</span>
+          <p class="c-notas">Salida: grosella negra, pera. Corazón: jazmín, azahar. Fondo: praliné, vainilla, pachulí.</p>
+          <div class="c-precio">$190.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama">
+        <div class="card-media">
+          <img src="demo-img/armaf-miss-mystique.jpg" alt="Armaf Miss Mystique" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Miss Mystique</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral almizclado</span>
+          <p class="c-notas">Salida: bergamota, pera. Corazón: jazmín, rosa, lirio. Fondo: almizcle, vainilla, sándalo.</p>
+          <div class="c-precio">$390.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama">
+        <div class="card-media">
+          <img src="demo-img/yves-saint-laurent-black-opium.jpg" alt="Yves Saint Laurent Black Opium" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Yves Saint Laurent</p>
+          <h3 class="c-nombre">Black Opium</h3>
+          <p class="c-meta">90 ML</p>
+          <span class="c-chip">Oriental gourmand adictivo</span>
+          <p class="c-notas">Salida: pera, mandarina, pimienta rosa. Corazón: café, jazmín, flor de naranjo. Fondo: vainilla, pachulí, cedro.</p>
+          <div class="c-precio">$590.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama">
+        <div class="card-media">
+          <img src="demo-img/burberry-her.jpg" alt="Burberry Her" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Burberry</p>
+          <h3 class="c-nombre">Her</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Frutal dulce</span>
+          <p class="c-notas">Salida: bayas rojas, cassis. Corazón: jazmín, violeta. Fondo: almizcle, ámbar, vainilla.</p>
+          <div class="c-precio">$499.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero">
+        <div class="card-media">
+          <img src="demo-img/al-haramain-l-aventure-blanche.jpg" alt="Al Haramain L'Aventure Blanche" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Al Haramain</p>
+          <h3 class="c-nombre">L'Aventure Blanche</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental floral</span>
+          <p class="c-notas">Salida: cítricos, especias. Corazón: flores blancas. Fondo: almizcle, ámbar, madera.</p>
+          <div class="c-precio">$210.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero">
+        <div class="card-media">
+          <img src="demo-img/al-haramain-l-aventure.jpg" alt="Al Haramain L'Aventure" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Al Haramain</p>
+          <h3 class="c-nombre">L'Aventure</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental amaderado</span>
+          <p class="c-notas">Salida: especias, cítricos. Corazón: oud, rosa. Fondo: ámbar, madera, almizcle.</p>
+          <div class="c-precio">$210.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero">
+        <div class="card-media">
+          <img src="demo-img/another-lab-germany-92.jpg" alt="Another Lab Germany 92" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Another Lab</p>
+          <h3 class="c-nombre">Germany 92</h3>
+          <p class="c-meta">90 ML</p>
+          <span class="c-chip">Aromático fresco</span>
+          <p class="c-notas">Salida: cítricos, notas verdes. Corazón: notas aromáticas. Fondo: almizcle, madera.</p>
+          <div class="c-precio">$380.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero">
+        <div class="card-media">
+          <img src="demo-img/giorgio-armani-stronger-with-you-intensely.jpg" alt="Giorgio Armani Stronger With You Intensely" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Giorgio Armani</p>
+          <h3 class="c-nombre">Stronger With You Intensely</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental especiado dulce</span>
+          <p class="c-notas">Salida: pimienta rosa, cardamomo. Corazón: lavanda, haba tonka. Fondo: vainilla, ámbar, cacao.</p>
+          <div class="c-precio">$580.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero">
+        <div class="card-media">
+          <img src="demo-img/bond-no-9-the-scent-of-peace.jpg" alt="Bond No. 9 The Scent of Peace" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Bond No. 9</p>
+          <h3 class="c-nombre">The Scent of Peace</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Aromático limpio</span>
+          <p class="c-notas">Salida: bergamota, notas verdes. Corazón: violeta. Fondo: almizcle, cedro.</p>
+          <div class="c-precio">$1.100.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero">
+        <div class="card-media">
+          <img src="demo-img/bvlgari-aqva.jpg" alt="Bvlgari Aqva" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Bvlgari</p>
+          <h3 class="c-nombre">Aqva</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Acuático amaderado</span>
+          <p class="c-notas">Salida: notas marinas, romero. Corazón: notas amaderadas acuáticas. Fondo: almizcle, ámbar.</p>
+          <div class="c-precio">$550.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero">
+        <div class="card-media">
+          <img src="demo-img/christian-dior-sauvage.webp" alt="Christian Dior Sauvage" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Christian Dior</p>
+          <h3 class="c-nombre">Sauvage</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Fresco amaderado ambarado</span>
+          <p class="c-notas">Salida: bergamota, pimienta de Sichuan. Corazón: lavanda, geranio. Fondo: ámbar gris, cedro, vetiver.</p>
+          <div class="c-precio">$680.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex">
+        <div class="card-media">
+          <img src="demo-img/kajal-almaz.jpg" alt="Kajal Almaz" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Kajal</p>
+          <h3 class="c-nombre">Almaz</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental amaderado</span>
+          <p class="c-notas">Salida: especias, cítricos. Corazón: flores, oud. Fondo: ámbar, madera.</p>
+          <div class="c-precio">$1.190.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex">
+        <div class="card-media">
+          <img src="demo-img/lorenzo-pazzaglia-sun-gria.jpg" alt="Lorenzo Pazzaglia Sun-Gria" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lorenzo Pazzaglia</p>
+          <h3 class="c-nombre">Sun-Gria</h3>
+          <p class="c-meta">50 ML</p>
+          <span class="c-chip">Frutal floral fresco</span>
+          <p class="c-notas">Salida: frutas rojas, cítricos. Corazón: flores. Fondo: almizcle, madera clara.</p>
+          <div class="c-precio">$979.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex">
+        <div class="card-media">
+          <img src="demo-img/maison-francis-kurkdjian-baccarat-rouge-540.jpg" alt="Maison Francis Kurkdjian Baccarat Rouge 540" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Francis Kurkdjian</p>
+          <h3 class="c-nombre">Baccarat Rouge 540</h3>
+          <p class="c-meta">70 ML</p>
+          <span class="c-chip">Ambarado floral icónico</span>
+          <p class="c-notas">Salida: azafrán, jazmín. Corazón: ámbar gris. Fondo: madera de cedro, almizcle.</p>
+          <div class="c-precio">$2.290.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex">
+        <div class="card-media">
+          <img src="demo-img/blackoud-abyss.jpg" alt="Blackoud Abyss" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Blackoud</p>
+          <h3 class="c-nombre">Abyss</h3>
+          <p class="c-meta">50 ML</p>
+          <span class="c-chip">Oud Acuático</span>
+          <p class="c-notas">Salida: Bergamota, notas marinas, ozónicas. Corazón: Oud, jazmín, lavanda. Fondo: Ámbar gris, sándalo, almizcle.</p>
+          <div class="c-precio">$350.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex">
+        <div class="card-media">
+          <img src="demo-img/blackoud-drew.jpg" alt="Blackoud Drew" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Blackoud</p>
+          <h3 class="c-nombre">Drew</h3>
+          <p class="c-meta">50 ML</p>
+          <span class="c-chip">Oud Frutal</span>
+          <p class="c-notas">Salida: Frutos rojos, bergamota. Corazón: Oud, rosa, jazmín. Fondo: Ámbar, vainilla, almizcle.</p>
+          <div class="c-precio">$349.000</div>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex">
+        <div class="card-media">
+          <img src="demo-img/maison-alhambra-sceptre-malachite.jpg" alt="Maison Alhambra Sceptre Malachite" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Sceptre Malachite</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Verde Floral</span>
+          <p class="c-notas">Salida: mandarina verde, bergamota, grosella negra. Corazón: lavanda, jazmín, notas aromáticas, pimienta rosa, especias. Fondo: ámbar, almizcle, vetiver, maderas.</p>
+          <div class="c-precio">$210.000</div>
+        </div>
+      </article>
+
+  </div>
+</section>
+
+<p class="aviso">
+  Esta es una <strong>página de prueba</strong> con 20 de los 672 productos.<br>
+  Sirve para decidir el estilo visual antes de aplicarlo al catálogo completo.
+</p>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- capas de la portada a distinta velocidad --- */
+  var capas = [].slice.call(document.querySelectorAll('.hero [data-speed]'));
+  var hero = document.querySelector('.hero');
+  var ticking = false;
+  function moverCapas(){
+    var y = window.pageYOffset;
+    if (y < window.innerHeight * 1.2) {
+      for (var i=0;i<capas.length;i++){
+        var s = parseFloat(capas[i].getAttribute('data-speed'));
+        capas[i].style.transform = 'translate3d(0,' + (y * s) + 'px,0)';
+      }
+      hero.style.opacity = Math.max(0, 1 - (y / (window.innerHeight * 0.85)));
+    }
+    ticking = false;
+  }
+  /* --- seccion fija: el texto cambia mientras la imagen se queda --- */
+  var wrap = document.querySelector('.pin-wrap');
+  var pasos = [].slice.call(document.querySelectorAll('.pin-step'));
+  var pinImg = document.getElementById('pinImg');
+  function moverPin(){
+    if (!wrap) return;
+    var r = wrap.getBoundingClientRect();
+    var total = wrap.offsetHeight - window.innerHeight;
+    var p = Math.min(1, Math.max(0, (-r.top) / total));
+    var idx = p < 0.34 ? 0 : (p < 0.68 ? 1 : 2);
+    for (var i=0;i<pasos.length;i++){ pasos[i].classList.toggle('on', i === idx); }
+    if (pinImg && !reduce){
+      pinImg.style.transform = 'translateY(' + (p * -40) + 'px) rotate(' + (p * 6 - 3) + 'deg) scale(' + (1 + p*0.06) + ')';
+    }
+  }
+  function alScroll(){
+    if (!ticking){ ticking = true; window.requestAnimationFrame(function(){ moverCapas(); moverPin(); }); }
+  }
+  if (!reduce){ window.addEventListener('scroll', alScroll, {passive:true}); }
+  moverPin();
+
+  /* --- las tarjetas aparecen al entrar en pantalla --- */
+  var cards = [].slice.call(document.querySelectorAll('.card'));
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(ent){
+      ent.forEach(function(e, i){
+        if (e.isIntersecting){
+          var d = (e.target.dataset.delay || 0);
+          setTimeout(function(){ e.target.classList.add('visible'); }, d);
+          io.unobserve(e.target);
+        }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    cards.forEach(function(c, i){ c.dataset.delay = (i % 4) * 70; io.observe(c); });
+  } else {
+    cards.forEach(function(c){ c.classList.add('visible'); });
+  }
+
+  /* --- inclinacion 3D siguiendo el cursor --- */
+  if (!reduce && window.matchMedia('(hover:hover)').matches){
+    cards.forEach(function(card){
+      var media = card.querySelector('.card-media');
+      card.addEventListener('mousemove', function(ev){
+        var r = card.getBoundingClientRect();
+        var mx = (ev.clientX - r.left) / r.width - 0.5;
+        var my = (ev.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(900px) rotateY(' + (mx * 7) + 'deg) rotateX(' + (-my * 7) + 'deg) translateY(-6px)';
+        card.style.boxShadow = '0 22px 46px rgba(45,10,1,.16)';
+      });
+      card.addEventListener('mouseleave', function(){
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+    });
+  }
+
+  /* --- filtros por genero --- */
+  var botones = [].slice.call(document.querySelectorAll('.filtros button'));
+  botones.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.getAttribute('data-f');
+      botones.forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      cards.forEach(function(c){
+        var ok = (f === 'todos') || (c.getAttribute('data-gen') === f);
+        c.classList.toggle('oculta', !ok);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
