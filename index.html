@@ -329,6 +329,18 @@ body.anim .card.visible{opacity:1;transform:none;}
 .f-talla:hover{border-color:var(--wine);background:var(--wine);color:var(--cream);}
 .f-talla[aria-current="true"]{background:var(--wine);color:var(--cream);border-color:var(--wine);}
 
+/* el buscador y los filtros quedan fijos arriba mientras se recorre el catalogo */
+.barra-fija{position:sticky;top:0;z-index:40;padding:.9rem 1rem .8rem;
+  background:rgba(248,239,229,.92);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,11,21,.08);}
+.barra-fija .buscador{margin-top:0;}
+.barra-fija .filtros{margin-top:.8rem;}
+@media (max-width:600px){
+  .barra-fija{padding:.7rem .8rem .6rem;}
+  .barra-fija .filtros{margin-top:.6rem;gap:.35rem;}
+  .barra-fija .filtros button{padding:.45rem 1rem;font-size:.78rem;}
+}
+
 </style>
 </head>
 <body>
@@ -375,6 +387,7 @@ body.anim .card.visible{opacity:1;transform:none;}
   <div class="cat-head">
     <p class="k">COLECCIÓN</p>
     <h2>Encuentra la tuya</h2>
+    <div class="barra-fija">
         <div class="buscador">
       <input type="text" id="q" placeholder="Buscar por marca, nombre o familia olfativa…" autocomplete="off">
       <span class="cuenta" id="cuenta"></span>
@@ -384,6 +397,7 @@ body.anim .card.visible{opacity:1;transform:none;}
       <button data-f="Dama" aria-pressed="false">Dama</button>
       <button data-f="Caballero" aria-pressed="false">Caballero</button>
       <button data-f="Unisex" aria-pressed="false">Unisex</button>
+    </div>
     </div>
   </div>
   <div class="grid">
@@ -1048,14 +1062,14 @@ body.anim .card.visible{opacity:1;transform:none;}
             <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20me%20interesa%3A%0A%0APrada%20Candy%0A80%20ML%0APrecio%3A%20%24590.000%0A%0AEsta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
           </div>
         </article>
-        <article class="card" data-gen="Dama" data-fam="prada-paradoxe-intense-50ml" data-ml="50">
+        <article class="card" data-gen="Dama" data-fam="prada-paradoxe-intense" data-ml="50">
           <div class="card-media">
             <img src="fotos/prada-paradoxe-intense-50ml-50.jpg" alt="Prada Paradoxe Intense 50ml" loading="lazy" decoding="async">
             <span class="gtag">Dama</span>
           </div>
           <div class="card-info">
             <p class="c-marca">Prada</p>
-            <h3 class="c-nombre">Paradoxe Intense 50ml</h3>
+            <h3 class="c-nombre">Paradoxe Intense</h3>
             <p class="c-meta">50 ML</p>
             <span class="c-chip">Floral amberado intenso</span>
             <p class="c-notas">Salida: pera, jazmín. Corazón: pachulí blanco, ámbar gris. Fondo: almizcle, vainilla.</p>
@@ -1063,14 +1077,14 @@ body.anim .card.visible{opacity:1;transform:none;}
             <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20me%20interesa%3A%0A%0APrada%20Paradoxe%20Intense%2050ml%0A50%20ML%0APrecio%3A%20%24750.000%0A%0AEsta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
           </div>
         </article>
-        <article class="card" data-gen="Dama" data-fam="prada-paradoxe-intense-90ml" data-ml="90">
+        <article class="card" data-gen="Dama" data-fam="prada-paradoxe-intense" data-ml="90">
           <div class="card-media">
             <img src="fotos/prada-paradoxe-intense-90ml-90.jpg" alt="Prada Paradoxe Intense 90ml" loading="lazy" decoding="async">
             <span class="gtag">Dama</span>
           </div>
           <div class="card-info">
             <p class="c-marca">Prada</p>
-            <h3 class="c-nombre">Paradoxe Intense 90ml</h3>
+            <h3 class="c-nombre">Paradoxe Intense</h3>
             <p class="c-meta">90 ML</p>
             <span class="c-chip">Floral amberado intenso</span>
             <p class="c-notas">Salida: pera, jazmín. Corazón: pachulí blanco, ámbar gris. Fondo: almizcle, vainilla.</p>
@@ -6602,14 +6616,14 @@ body.anim .card.visible{opacity:1;transform:none;}
             <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20me%20interesa%3A%0A%0AJo%20Milano%20Game%20of%20Spades%20Rouge%0A%0AEsta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
           </div>
         </article>
-        <article class="card" data-gen="Caballero" data-fam="game-of-spades-king-jo-milano-100ml-3-4oz" data-ml="">
+        <article class="card" data-gen="Caballero" data-fam="game-of-spades-king" data-ml="">
           <div class="card-media">
             <img src="fotos/game-of-spades-king-jo-milano-100ml-3-4oz.jpg" alt="Game of Spades King Jo Milano 100ml 3 4oz" loading="lazy" decoding="async">
             <span class="gtag">Caballero</span>
           </div>
           <div class="card-info">
             <p class="c-marca">Game of Spades</p>
-            <h3 class="c-nombre">King Jo Milano 100ml 3 4oz</h3>
+            <h3 class="c-nombre">King</h3>
             <p class="c-meta"></p>
             <div class="c-precio">Consultar precio</div>
             <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20me%20interesa%3A%0A%0AGame%20of%20Spades%20King%20Jo%20Milano%20100ml%203%204oz%0A%0AEsta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
@@ -9074,14 +9088,14 @@ body.anim .card.visible{opacity:1;transform:none;}
             <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20me%20interesa%3A%0A%0ABlackoud%20Oud%20Noir%0A50%20ML%0A%0AEsta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
           </div>
         </article>
-        <article class="card" data-gen="Unisex" data-fam="emir-milano-napoli-100-ml7" data-ml="">
+        <article class="card" data-gen="Unisex" data-fam="emir-milano-napoli" data-ml="">
           <div class="card-media">
             <img src="fotos/emir-milano-napoli-100-ml7.webp" alt="Emir Milano Napoli 100 Ml7" loading="lazy" decoding="async">
             <span class="gtag">Unisex</span>
           </div>
           <div class="card-info">
             <p class="c-marca">Emir Milano</p>
-            <h3 class="c-nombre">Napoli 100 Ml7</h3>
+            <h3 class="c-nombre">Napoli</h3>
             <p class="c-meta"></p>
             <div class="c-precio">Consultar precio</div>
             <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20me%20interesa%3A%0A%0AEmir%20Milano%20Napoli%20100%20Ml7%0A%0AEsta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
@@ -10316,14 +10330,14 @@ body.anim .card.visible{opacity:1;transform:none;}
             <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20me%20interesa%3A%0A%0AOrientica%20Royal%20Amber%0A100%20ML%0APrecio%3A%20%24490.000%0A%0AEsta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
           </div>
         </article>
-        <article class="card" data-gen="Unisex" data-fam="emir-milano-napoli-100-ml7" data-ml="100">
+        <article class="card" data-gen="Unisex" data-fam="emir-milano-napoli" data-ml="100">
           <div class="card-media">
             <img src="fotos/emir-milano-napoli-100-ml7-100.jpg" alt="Emir Milano Napoli — 100 ml7" loading="lazy" decoding="async">
             <span class="gtag">Unisex</span>
           </div>
           <div class="card-info">
-            <p class="c-marca">Emir</p>
-            <h3 class="c-nombre">Milano Napoli — 100 ml7</h3>
+            <p class="c-marca">Emir Milano</p>
+            <h3 class="c-nombre">Napoli</h3>
             <p class="c-meta">100 ML</p>
             <div class="c-precio">Consultar precio</div>
             <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20me%20interesa%3A%0A%0AEmir%20Milano%20Napoli%20%E2%80%94%20100%20ml7%0A100%20ML%0A%0AEsta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
