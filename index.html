@@ -9695,6 +9695,7 @@ body{
          a su propia velocidad mientras el banner cruza la pantalla --- */
   var piezas = [].slice.call(document.querySelectorAll('.banner [data-drift]'));
   function moverBanners(){
+    if (!piezas) return;
     for (var i=0;i<piezas.length;i++){
       var el = piezas[i];
       var sec = el.closest('.banner');
