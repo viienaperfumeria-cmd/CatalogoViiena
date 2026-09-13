@@ -362,47 +362,25 @@ body.anim .card.visible{opacity:1;transform:none;}
 .ficha-x{z-index:5;background:rgba(248,239,229,.92);}
 @media (max-width:760px){ .ficha-scroll{grid-template-columns:1fr;} .ficha-compra .ficha-wa{min-height:48px;} }
 
+/* banner de portada sencillo: solo texto */
+.portada{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;min-height:clamp(300px,52vh,540px);padding:3rem 1.5rem;
+  background:radial-gradient(120% 110% at 50% 0%, #6B1B28 0%, #4A0B15 50%, #2D0A01 100%);}
+.portada-k{margin:0 0 1rem;font-family:'Bebas Neue',sans-serif;letter-spacing:.5em;
+  font-size:clamp(.8rem,1.6vw,1.05rem);color:var(--gold);padding-left:.5em;}
+.portada-t{margin:0;font-family:'Prata',serif;font-weight:400;color:var(--cream);
+  font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.05;}
+
 </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="layer" data-speed="0.12"><div class="glow"></div></div>
-  <div class="layer" data-speed="0.30"><div class="hero-word">VIIENA</div></div>
-  <img class="hero-bottle" data-speed="0.55" src="fotos/christian-dior-sauvage-100.webp" alt="">
-  <div class="hero-copy" data-speed="0.18">
-    <p class="k">PERFUMERÍA · MEDELLÍN</p>
-    <h1>El aroma es lo primero<br>que recuerdan de ti</h1>
-    <p>Fragancias originales, árabes y de nicho. Más de seiscientas referencias.</p>
-  </div>
-  <div class="scroll-hint">BAJA<span></span></div>
+<section class="portada">
+  <p class="portada-k">PERFUMERÍA</p>
+  <h1 class="portada-t">Catálogo Viiena</h1>
 </section>
 
 <div class="tira">MEDELLÍN, COLOMBIA &nbsp;·&nbsp; ENVÍOS A TODO EL PAÍS &nbsp;·&nbsp; <b>WHATSAPP +57 317 693 3894</b></div>
-
-<div class="pin-wrap">
-  <div class="pin">
-    <div class="pin-media"><img id="pinImg" src="fotos/maison-francis-kurkdjian-baccarat-rouge-540-70-recorte.png" alt="Maison Francis Kurkdjian Baccarat Rouge 540"></div>
-    <div class="pin-text">
-      <div class="pin-step" data-step="0">
-        <p class="k">DESTACADO</p>
-        <h2>Maison Francis Kurkdjian<br>Baccarat Rouge 540</h2>
-        <p>Una de las fragancias más reconocidas del mundo. Luminosa, envolvente y con una estela que permanece.</p>
-      </div>
-      <div class="pin-step" data-step="1">
-        <p class="k">SU COMPOSICIÓN</p>
-        <h2>Cómo se abre<br>y cómo termina</h2>
-        <p>Salida: azafrán, jazmín. Corazón: ámbar gris. Fondo: madera de cedro, almizcle.</p>
-      </div>
-      <div class="pin-step" data-step="2">
-        <p class="k">DISPONIBLE</p>
-        <h2>Llévala contigo</h2>
-        <p>Entrega en toda Colombia. Producto original, con garantía.</p>
-        <div class="pin-precio">$2.290.000</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <section class="catalogo">
   <div class="cat-head">
@@ -10482,7 +10460,7 @@ body.anim .card.visible{opacity:1;transform:none;}
         var s = parseFloat(capas[i].getAttribute('data-speed'));
         capas[i].style.setProperty('--py', (y * s) + 'px');
       }
-      hero.style.opacity = Math.max(0, 1 - (y / (window.innerHeight * 0.85)));
+      if (hero) hero.style.opacity = Math.max(0, 1 - (y / (window.innerHeight * 0.85)));
     }
     ticking = false;
   }
