@@ -351,6 +351,17 @@ body.anim .card.visible{opacity:1;transform:none;}
   .barra-fija{padding:.6rem .7rem .5rem;}
 }
 
+/* ficha: la X y el boton de compra quedan fijos; solo se desplaza el contenido */
+.ficha-caja{display:flex;flex-direction:column;overflow:hidden;}
+.ficha-scroll{display:grid;grid-template-columns:1fr 1fr;overflow:auto;flex:1 1 auto;min-height:0;}
+.ficha-compra{flex-shrink:0;display:flex;justify-content:center;padding:.9rem 1.2rem;
+  background:var(--cream);border-top:1px solid var(--hairline);}
+.ficha-compra .ficha-wa{width:100%;max-width:420px;justify-content:center;}
+/* La foto tiene mix-blend-mode, que la pinta por encima de la X aunque la X
+   este posicionada. Sin z-index, el toque sobre la X lo recibia la imagen. */
+.ficha-x{z-index:5;background:rgba(248,239,229,.92);}
+@media (max-width:760px){ .ficha-scroll{grid-template-columns:1fr;} .ficha-compra .ficha-wa{min-height:48px;} }
+
 </style>
 </head>
 <body>
@@ -10427,8 +10438,9 @@ body.anim .card.visible{opacity:1;transform:none;}
 <div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-label="Detalle del perfume">
   <div class="ficha-caja">
     <button class="ficha-x" id="fichaX" aria-label="Cerrar">&times;</button>
-    <div class="ficha-img"><img id="fImg" src="" alt=""></div>
-    <div class="ficha-datos">
+    <div class="ficha-scroll">
+      <div class="ficha-img"><img id="fImg" src="" alt=""></div>
+      <div class="ficha-datos">
       <p class="f-marca" id="fMarca"></p>
       <h3 id="fNombre"></h3>
       <p class="f-meta" id="fMeta"></p>
@@ -10436,8 +10448,11 @@ body.anim .card.visible{opacity:1;transform:none;}
       <span class="f-chip" id="fChip"></span>
       <p class="f-notas" id="fNotas"></p>
       <div class="f-precio" id="fPrecio"></div>
-      <a class="ficha-wa" id="fWa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.06 24l1.68-6.16A11.87 11.87 0 010 11.9C0 5.33 5.34 0 11.9 0a11.8 11.8 0 018.4 3.48A11.8 11.8 0 0123.8 11.9c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 01-5.7-1.45L.06 24zM6.6 20.2l.36.2a9.9 9.9 0 004.94 1.35 9.88 9.88 0 100-19.76 9.88 9.88 0 00-9.88 9.88c0 1.9.54 3.75 1.56 5.34l.24.38-1 3.63 3.78-1.02zm11.4-5.55c-.08-.14-.3-.22-.62-.38-.32-.16-1.9-.94-2.2-1.04-.3-.11-.5-.16-.72.16-.2.32-.82 1.03-1 1.25-.19.21-.37.24-.68.08-.32-.16-1.35-.5-2.57-1.59-.95-.84-1.6-1.88-1.78-2.2-.19-.32-.02-.5.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.08 1.3 3.29c.16.21 2.24 3.42 5.43 4.8.76.32 1.35.52 1.81.67.76.24 1.45.2 2 .12.61-.09 1.9-.77 2.16-1.52.27-.75.27-1.38.19-1.52z"/></svg> PEDIR POR WHATSAPP</a>
       <p class="ficha-nota">Te responderemos por WhatsApp con disponibilidad y formas de pago.<br>Estamos en Medellín y enviamos a todo el país.</p>
+      </div>
+    </div>
+    <div class="ficha-compra">
+      <a class="ficha-wa" id="fWa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.06 24l1.68-6.16A11.87 11.87 0 010 11.9C0 5.33 5.34 0 11.9 0a11.8 11.8 0 018.4 3.48A11.8 11.8 0 0123.8 11.9c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 01-5.7-1.45L.06 24zM6.6 20.2l.36.2a9.9 9.9 0 004.94 1.35 9.88 9.88 0 100-19.76 9.88 9.88 0 00-9.88 9.88c0 1.9.54 3.75 1.56 5.34l.24.38-1 3.63 3.78-1.02zm11.4-5.55c-.08-.14-.3-.22-.62-.38-.32-.16-1.9-.94-2.2-1.04-.3-.11-.5-.16-.72.16-.2.32-.82 1.03-1 1.25-.19.21-.37.24-.68.08-.32-.16-1.35-.5-2.57-1.59-.95-.84-1.6-1.88-1.78-2.2-.19-.32-.02-.5.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.08 1.3 3.29c.16.21 2.24 3.42 5.43 4.8.76.32 1.35.52 1.81.67.76.24 1.45.2 2 .12.61-.09 1.9-.77 2.16-1.52.27-.75.27-1.38.19-1.52z"/></svg> PEDIR POR WHATSAPP</a>
     </div>
   </div>
 </div>
@@ -10639,6 +10654,8 @@ body.anim .card.visible{opacity:1;transform:none;}
     fWa.setAttribute('href', href);
     pintarTallas(card);
     ficha.classList.add('abierta');
+    var zonaScroll = document.querySelector('.ficha-scroll');
+    if (zonaScroll) { zonaScroll.scrollTop = 0; }
     document.body.style.overflow = 'hidden';
     return true;
   }
