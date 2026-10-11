@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Promoción Viiena · Perfumes desde $169.000</title>
+<meta name="description" content="97 perfumes a $200.000 o menos. Perfumería Viiena, Medellín. Envíos a todo el país.">
+<style>
+:root{
+  --wine:#4A0B15;
+  --wine-soft:#6B1B28;
+  --cream:#F8EFE5;
+  --pink:#FFBDC5;
+  --ink:#2D0A01;
+  --gold:#C9A96E;
+  --hairline:rgba(74,11,21,0.16);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;padding:0;background:var(--cream);color:var(--ink);
+  font-family:'Poppins',sans-serif;overflow-x:hidden;
+}
+
+/* ---------------- PORTADA ---------------- */
+.hero{
+  position:relative;height:100vh;min-height:560px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:radial-gradient(120% 100% at 50% 0%, #6B1B28 0%, #4A0B15 45%, #2D0A01 100%);
+}
+/* capas que se mueven a distinta velocidad */
+.layer{position:absolute;inset:0;will-change:transform;pointer-events:none;}
+.glow{
+  width:80vmin;height:80vmin;left:50%;top:46%;position:absolute;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle, rgba(255,189,197,0.30) 0%, rgba(201,169,110,0.14) 38%, transparent 68%);
+  filter:blur(12px);
+}
+.hero-word{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,22vw,20rem);
+  line-height:.8;letter-spacing:.04em;color:rgba(248,239,229,.10);
+  white-space:nowrap;user-select:none;
+}
+.hero-bottle{
+  position:relative;z-index:3;height:min(62vh,540px);
+  filter:drop-shadow(0 40px 70px rgba(0,0,0,.55));
+  will-change:transform;
+}
+.hero-copy{position:absolute;z-index:4;left:50%;bottom:12vh;transform:translateX(-50%);text-align:center;width:92%;}
+.hero-copy .k{
+  font-family:'Bebas Neue',sans-serif;letter-spacing:.42em;
+  font-size:clamp(.7rem,1.3vw,.95rem);color:var(--gold);margin:0 0 .8rem;
+}
+.hero-copy h1{
+  font-family:'Prata',serif;font-weight:400;margin:0;
+  font-size:clamp(1.9rem,5.2vw,3.6rem);color:var(--cream);line-height:1.12;
+}
+.hero-copy p{
+  margin:1rem auto 0;max-width:42ch;color:rgba(248,239,229,.72);
+  font-weight:300;font-size:clamp(.9rem,1.5vw,1.05rem);
+}
+.scroll-hint{
+  position:absolute;z-index:5;left:50%;bottom:3.2vh;transform:translateX(-50%);
+  color:rgba(248,239,229,.5);font-size:.7rem;letter-spacing:.3em;
+  font-family:'Bebas Neue',sans-serif;text-align:center;
+}
+.scroll-hint span{display:block;width:1px;height:46px;margin:.7rem auto 0;
+  background:linear-gradient(rgba(248,239,229,.55),transparent);animation:desliza 2.2s ease-in-out infinite;}
+@keyframes desliza{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ------------- SECCION FIJA (destacado) ------------- */
+.pin-wrap{position:relative;height:260vh;background:var(--ink);}
+.pin{position:sticky;top:0;height:100vh;display:grid;
+  grid-template-columns:1fr 1fr;align-items:center;gap:2rem;
+  padding:0 clamp(1.2rem,6vw,7rem);overflow:hidden;}
+.pin-media{display:flex;justify-content:center;align-items:center;position:relative;}
+.pin-media::after{
+  content:'';position:absolute;width:62%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,110,.24),transparent 66%);filter:blur(6px);
+}
+.pin-media img{position:relative;z-index:2;max-height:64vh;width:auto;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.6));will-change:transform;}
+.pin-text{color:var(--cream);}
+.pin-step{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
+.pin-step.on{opacity:1;transform:none;}
+.pin-step .k{font-family:'Bebas Neue',sans-serif;letter-spacing:.4em;color:var(--gold);font-size:.8rem;margin:0 0 .7rem;}
+.pin-step h2{font-family:'Prata',serif;font-weight:400;font-size:clamp(1.5rem,3.4vw,2.6rem);margin:0 0 .9rem;line-height:1.2;}
+.pin-step p{margin:0;color:rgba(248,239,229,.7);font-weight:300;line-height:1.75;max-width:46ch;}
+.pin-precio{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3.6vw,2.6rem);color:var(--gold);letter-spacing:.05em;margin-top:1.4rem;}
+
+/* ---------------- CATALOGO ---------------- */
+.catalogo{padding:clamp(4rem,10vw,9rem) clamp(1rem,5vw,5rem) 8rem;}
+.cat-head{text-align:center;margin-bottom:clamp(2.5rem,6vw,5rem);}
+.cat-head .k{font-family:'Bebas Neue',sans-serif;letter-spacing:.42em;color:var(--wine-soft);font-size:.8rem;margin:0 0 .7rem;}
+.cat-head h2{font-family:'Prata',serif;font-weight:400;font-size:clamp(1.7rem,4.4vw,3rem);margin:0;color:var(--wine);}
+.filtros{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem;}
+.filtros button{
+  border:1px solid var(--hairline);background:transparent;color:var(--wine);
+  font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:.85rem;
+  padding:.55rem 1.4rem;border-radius:999px;cursor:pointer;transition:.25s;
+}
+.filtros button:hover{border-color:var(--wine);}
+.filtros button[aria-pressed="true"]{background:var(--wine);color:var(--cream);border-color:var(--wine);}
+
+.grid{display:grid;gap:clamp(1.6rem,3vw,2.6rem);max-width:1320px;margin:0 auto;
+  grid-template-columns:repeat(auto-fill,minmax(265px,1fr));}
+
+.card{
+  background:#fff;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(74,11,21,.08);
+  box-shadow:0 2px 18px rgba(45,10,1,.05);
+
+  transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1), box-shadow .35s ease;
+  will-change:transform,opacity;
+}
+.card.visible{opacity:1;transform:none;}
+/* Las tarjetas solo nacen ocultas si el script arranco bien y marco el body.
+   Si el JavaScript falla, el catalogo se ve igual: un efecto visual nunca
+   debe poder esconder el inventario completo. */
+body.anim .card{opacity:0;transform:translateY(34px);}
+body.anim .card.visible{opacity:1;transform:none;}
+.card.oculta{display:none;}
+.card-media{position:relative;background:#fff;aspect-ratio:1;overflow:hidden;
+  }
+.card-media img{width:100%;height:100%;object-fit:contain;padding:10%;
+  transition:transform .6s cubic-bezier(.22,.61,.36,1);will-change:transform;}
+.card:hover .card-media img{transform:scale(1.06);}
+.gtag{position:absolute;top:12px;left:12px;font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.18em;font-size:.66rem;color:var(--wine);background:rgba(248,239,229,.9);
+  padding:.28rem .7rem;border-radius:999px;}
+.card-info{padding:1.1rem 1.3rem 1.5rem;}
+.c-marca{margin:0 0 .15rem;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wine-soft);}
+.c-nombre{margin:0 0 .35rem;font-family:'Prata',serif;font-weight:400;font-size:1.12rem;color:var(--ink);line-height:1.3;}
+.c-meta{margin:0 0 .7rem;font-size:.72rem;color:rgba(45,10,1,.5);letter-spacing:.08em;}
+.c-chip{display:inline-block;font-size:.66rem;letter-spacing:.1em;padding:.28rem .7rem;
+  border:1px solid var(--hairline);border-radius:999px;color:var(--wine);margin-bottom:.7rem;}
+.c-notas{margin:0 0 1rem;font-size:.76rem;line-height:1.6;color:rgba(45,10,1,.62);font-weight:300;}
+.c-precio{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;color:var(--wine);}
+
+.aviso{max-width:760px;margin:0 auto;padding:2.4rem clamp(1rem,5vw,2rem) 5rem;text-align:center;
+  color:rgba(45,10,1,.55);font-size:.82rem;line-height:1.8;font-weight:300;}
+.aviso strong{color:var(--wine);font-weight:500;}
+
+@media (max-width:860px){
+  .pin{grid-template-columns:1fr;text-align:center;gap:1.2rem;}
+  .pin-media img{max-height:38vh;}
+  .pin-text{padding-bottom:2rem;}
+  .pin-step p{margin:0 auto;}
+  .pin-wrap{height:230vh;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .card{opacity:1;transform:none;transition:none;}
+  .pin-step{opacity:1;transform:none;}
+  .scroll-hint span{animation:none;}
+}
+
+/* ===== ARREGLOS Y BANNERS ===== */
+/* ---- ARREGLO 1: el texto de la portada se salia por la derecha ----
+   Causa: .hero-copy tenia tambien la clase .layer, que aplica inset:0 y estira
+   el bloque de borde a borde; encima el JS le sobreescribia el transform y
+   mataba el translateX(-50%) que lo centraba.
+   Solucion: el desplazamiento por scroll viaja en una variable CSS (--py),
+   asi el transform lo controla el CSS y nunca pierde el centrado. */
+.layer{
+  position:absolute;inset:0;pointer-events:none;
+  will-change:transform;
+  transform:translate3d(0, var(--py,0px), 0);
+}
+.hero-bottle{
+  position:relative;z-index:3;height:min(58vh,520px);
+  filter:drop-shadow(0 40px 70px rgba(0,0,0,.55));
+  will-change:transform;
+  transform:translate3d(0, var(--py,0px), 0);
+}
+.hero-copy{
+  position:absolute;z-index:4;left:50%;bottom:11vh;
+  width:min(92vw,780px);text-align:center;
+  transform:translate3d(-50%, var(--py,0px), 0);
+  will-change:transform;
+}
+
+/* ---- ARREGLO 2: que no se vea el fondo blanco de las fotos ----
+   En las tarjetas (fondo claro) basta con multiply: el blanco desaparece
+   y el frasco queda flotando, sin tener que tocar la imagen.
+   En los banners y el destacado, que van sobre fondo oscuro, multiply no
+   sirve; ahi se usan PNG con el fondo ya recortado. */
+.card-media{background:transparent;}
+.card-media img{mix-blend-mode:multiply;}
+.card{background:var(--cream);}
+
+/* ---------------- BANNERS ---------------- */
+.banner{position:relative;overflow:hidden;isolation:isolate;}
+.banner .b-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;
+  padding:clamp(3.5rem,8vw,7rem) clamp(1.2rem,5vw,4rem);}
+.banner .k{font-family:'Bebas Neue',sans-serif;letter-spacing:.42em;font-size:.78rem;margin:0 0 .8rem;}
+.banner h2{font-family:'Prata',serif;font-weight:400;margin:0 0 1rem;line-height:1.15;
+  font-size:clamp(1.6rem,4vw,3rem);}
+.banner p{margin:0;font-weight:300;line-height:1.75;max-width:44ch;}
+.banner .precio{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:.05em;margin-top:1.2rem;}
+
+/* variante A: frasco al centro, el texto se abre a los lados */
+.banner-a{background:radial-gradient(120% 120% at 50% 30%, #6B1B28 0%, #4A0B15 50%, #2D0A01 100%);color:var(--cream);}
+.banner-a .b-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(1rem,4vw,3rem);}
+.banner-a .lado{will-change:transform;}
+.banner-a .lado.izq{text-align:right;justify-self:end;}
+.banner-a .lado.der{text-align:left;justify-self:start;}
+.banner-a .k{color:var(--gold);}
+.banner-a img{height:clamp(220px,38vh,400px);width:auto;will-change:transform;
+  filter:drop-shadow(0 30px 55px rgba(0,0,0,.6));}
+.banner-a .halo{position:absolute;left:50%;top:50%;width:52vmin;height:52vmin;z-index:1;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,110,.28),transparent 65%);filter:blur(10px);}
+
+/* variante B: el frasco entra desde un lado y el texto desde el otro */
+.banner-b{background:linear-gradient(105deg,var(--cream) 0%, #F1E2D4 55%, #E8D2C2 100%);color:var(--ink);}
+.banner-b .b-inner{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:clamp(1.5rem,5vw,4rem);}
+.banner-b .k{color:var(--wine-soft);}
+.banner-b h2{color:var(--wine);}
+.banner-b p{color:rgba(45,10,1,.68);}
+.banner-b .precio{color:var(--wine);}
+.banner-b .b-media{display:flex;justify-content:center;}
+.banner-b img{height:clamp(230px,40vh,420px);width:auto;will-change:transform;
+  filter:drop-shadow(0 26px 44px rgba(74,11,21,.22));}
+.banner-b .franja{position:absolute;left:0;top:0;height:100%;width:38%;z-index:1;
+  background:linear-gradient(180deg,rgba(74,11,21,.06),rgba(74,11,21,0));will-change:transform;}
+
+/* variante C: banda oscura, frasco grande desplazado y titulo enorme detras */
+.banner-c{background:var(--ink);color:var(--cream);}
+.banner-c .b-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(1.5rem,5vw,4rem);}
+.banner-c .gigante{position:absolute;left:50%;top:50%;z-index:1;white-space:nowrap;
+  transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,16vw,13rem);color:rgba(248,239,229,.055);letter-spacing:.05em;
+  will-change:transform;user-select:none;}
+.banner-c .k{color:var(--gold);}
+.banner-c img{height:clamp(230px,44vh,460px);width:auto;will-change:transform;
+  filter:drop-shadow(0 34px 60px rgba(0,0,0,.65));}
+.banner-c .b-media{display:flex;justify-content:center;}
+
+@media (max-width:860px){
+  .banner-a .b-inner,.banner-b .b-inner,.banner-c .b-inner{grid-template-columns:1fr;text-align:center;}
+  .banner-a .lado.izq,.banner-a .lado.der{text-align:center;justify-self:center;}
+  .banner p{margin-left:auto;margin-right:auto;}
+  .banner-a img,.banner-b img,.banner-c img{height:clamp(180px,30vh,280px);}
+  .banner-b .franja{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .layer,.hero-bottle,.hero-copy{transform:none !important;}
+  .banner [data-drift]{transform:none !important;}
+}
+
+/* ---- buscador: con 672 productos es indispensable ---- */
+.buscador{max-width:560px;margin:1.8rem auto 0;position:relative;}
+.buscador input{
+  width:100%;padding:.95rem 1.4rem;border-radius:999px;
+  border:1px solid var(--hairline);background:#fff;color:var(--ink);
+  font-family:'Poppins',sans-serif;font-size:.92rem;outline:none;transition:.25s;
+}
+.buscador input:focus{border-color:var(--wine);box-shadow:0 0 0 4px rgba(74,11,21,.07);}
+.buscador input::placeholder{color:rgba(45,10,1,.38);}
+.cuenta{display:block;text-align:center;margin-top:.7rem;font-size:.74rem;
+  letter-spacing:.14em;color:rgba(45,10,1,.45);font-family:'Bebas Neue',sans-serif;}
+.sin-resultados{display:none;text-align:center;padding:3rem 1rem;color:rgba(45,10,1,.55);
+  font-weight:300;}
+.sin-resultados.on{display:block;}
+
+/* ================= CONTACTO, FICHA Y COMPRA ================= */
+.c-adquirir{display:inline-block;margin-top:.9rem;padding:.6rem 1.5rem;border-radius:999px;
+  background:var(--wine);color:var(--cream);text-decoration:none;font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.18em;font-size:.9rem;transition:.25s;border:1px solid var(--wine);}
+.c-adquirir:hover{background:transparent;color:var(--wine);}
+
+/* barra de ubicacion bajo la portada */
+.tira{background:var(--wine);color:var(--cream);text-align:center;padding:.85rem 1rem;
+  font-size:.8rem;letter-spacing:.18em;font-family:'Bebas Neue',sans-serif;}
+.tira b{color:var(--gold);font-weight:400;}
+
+/* boton flotante de whatsapp */
+.wa-flota{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:.6rem;
+  background:#25D366;color:#fff;text-decoration:none;padding:.85rem 1.3rem;border-radius:999px;
+  box-shadow:0 8px 26px rgba(0,0,0,.28);font-family:'Bebas Neue',sans-serif;letter-spacing:.16em;
+  font-size:.9rem;transition:transform .25s;}
+.wa-flota:hover{transform:translateY(-3px);}
+.wa-flota svg{width:20px;height:20px;fill:#fff;}
+@media (max-width:600px){ .wa-flota span{display:none;} .wa-flota{padding:.9rem;} }
+
+/* ficha del perfume */
+.ficha{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
+  background:rgba(45,10,1,.72);padding:1rem;}
+.ficha.abierta{display:flex;}
+.ficha-caja{background:var(--cream);border-radius:20px;max-width:940px;width:100%;
+  max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative;}
+.ficha-img{display:flex;align-items:center;justify-content:center;padding:2rem;background:#fff;}
+.ficha-img img{max-width:100%;max-height:52vh;object-fit:contain;mix-blend-mode:multiply;}
+.ficha-datos{padding:2.4rem 2.2rem;}
+.ficha-datos .f-marca{margin:0 0 .3rem;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--wine-soft);}
+.ficha-datos h3{margin:0 0 .5rem;font-family:'Prata',serif;font-weight:400;font-size:1.7rem;color:var(--ink);line-height:1.25;}
+.ficha-datos .f-meta{margin:0 0 1rem;font-size:.8rem;color:rgba(45,10,1,.55);letter-spacing:.08em;}
+.ficha-datos .f-chip{display:inline-block;font-size:.7rem;letter-spacing:.1em;padding:.3rem .8rem;
+  border:1px solid var(--hairline);border-radius:999px;color:var(--wine);margin-bottom:1rem;}
+.ficha-datos .f-notas{margin:0 0 1.2rem;font-size:.86rem;line-height:1.75;color:rgba(45,10,1,.7);font-weight:300;}
+.ficha-datos .f-precio{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--wine);letter-spacing:.04em;margin-bottom:1.4rem;}
+.ficha-wa{display:inline-flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;
+  text-decoration:none;padding:.9rem 1.7rem;border-radius:999px;font-family:'Bebas Neue',sans-serif;
+  letter-spacing:.16em;font-size:1rem;transition:.25s;}
+.ficha-wa:hover{filter:brightness(.93);}
+.ficha-wa svg{width:20px;height:20px;fill:#fff;}
+.ficha-nota{margin:1rem 0 0;font-size:.74rem;color:rgba(45,10,1,.5);font-weight:300;line-height:1.6;}
+.ficha-x{position:absolute;top:12px;right:16px;background:rgba(45,10,1,.08);border:none;cursor:pointer;
+  width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;color:var(--ink);}
+.ficha-x:hover{background:rgba(45,10,1,.16);}
+@media (max-width:760px){ .ficha-caja{grid-template-columns:1fr;} .ficha-img{padding:1.4rem;} .ficha-datos{padding:1.6rem;} }
+
+/* pie */
+.pie{background:var(--ink);color:rgba(248,239,229,.82);padding:3.5rem 1.5rem 3rem;text-align:center;}
+.pie h4{font-family:'Prata',serif;font-weight:400;font-size:1.5rem;margin:0 0 .4rem;color:var(--cream);}
+.pie .k{font-family:'Bebas Neue',sans-serif;letter-spacing:.4em;color:var(--gold);font-size:.76rem;margin:0 0 1.4rem;}
+.pie p{margin:.35rem 0;font-size:.88rem;font-weight:300;}
+.pie a{color:var(--gold);text-decoration:none;}
+.pie a:hover{text-decoration:underline;}
+.pie .sep{width:46px;height:1px;background:rgba(201,169,110,.5);margin:1.6rem auto;}
+
+/* otros tamanos del mismo perfume, dentro de la ficha */
+.f-tallas{display:flex;gap:.4rem;flex-wrap:wrap;margin:0 0 1.2rem;}
+.f-talla{border:1px solid var(--hairline);background:transparent;color:var(--wine);
+  font-family:'Bebas Neue',sans-serif;letter-spacing:.12em;font-size:.8rem;
+  padding:.35rem .85rem;border-radius:999px;cursor:pointer;transition:.2s;}
+.f-talla:hover{border-color:var(--wine);background:var(--wine);color:var(--cream);}
+.f-talla[aria-current="true"]{background:var(--wine);color:var(--cream);border-color:var(--wine);}
+
+/* el buscador y los filtros quedan fijos arriba mientras se recorre el catalogo */
+.barra-fija{position:sticky;top:0;z-index:40;padding:.9rem 1rem .8rem;
+  background:rgba(248,239,229,.92);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,11,21,.08);}
+.barra-fija .buscador{margin-top:0;}
+.barra-fija .filtros{margin-top:.8rem;}
+@media (max-width:600px){
+  .barra-fija{padding:.7rem .8rem .6rem;}
+  .barra-fija .filtros{margin-top:.6rem;gap:.35rem;}
+  .barra-fija .filtros button{padding:.45rem 1rem;font-size:.78rem;}
+}
+
+/* En movil los botones deben poder tocarse con el dedo: 44px es el minimo
+   recomendado. Medidos daban 32px (filtros) y 40px (Adquirir). */
+@media (max-width:760px){
+  .filtros button{min-height:44px;padding:.7rem 1.2rem;}
+  .c-adquirir{min-height:46px;display:flex;align-items:center;justify-content:center;width:100%;}
+  .f-talla{min-height:40px;padding:.5rem 1rem;}
+  .ficha-x{width:44px;height:44px;}
+  .barra-fija{padding:.6rem .7rem .5rem;}
+}
+
+/* ficha: la X y el boton de compra quedan fijos; solo se desplaza el contenido */
+.ficha-caja{display:flex;flex-direction:column;overflow:hidden;}
+.ficha-scroll{display:grid;grid-template-columns:1fr 1fr;overflow:auto;flex:1 1 auto;min-height:0;}
+.ficha-compra{flex-shrink:0;display:flex;justify-content:center;padding:.9rem 1.2rem;
+  background:var(--cream);border-top:1px solid var(--hairline);}
+.ficha-compra .ficha-wa{width:100%;max-width:420px;justify-content:center;}
+/* La foto tiene mix-blend-mode, que la pinta por encima de la X aunque la X
+   este posicionada. Sin z-index, el toque sobre la X lo recibia la imagen. */
+.ficha-x{z-index:5;background:rgba(248,239,229,.92);}
+@media (max-width:760px){ .ficha-scroll{grid-template-columns:1fr;} .ficha-compra .ficha-wa{min-height:48px;} }
+
+/* banner de portada sencillo: solo texto */
+.portada{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;min-height:clamp(300px,52vh,540px);padding:3rem 1.5rem;
+  background:radial-gradient(120% 110% at 50% 0%, #6B1B28 0%, #4A0B15 50%, #2D0A01 100%);}
+.portada-k{margin:0 0 1rem;font-family:'Bebas Neue',sans-serif;letter-spacing:.5em;
+  font-size:clamp(.8rem,1.6vw,1.05rem);color:var(--gold);padding-left:.5em;}
+.portada-t{margin:0;font-family:'Prata',serif;font-weight:400;color:var(--cream);
+  font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.05;}
+
+
+/* ===== promocion ===== */
+.promo-bajada{margin:.4rem 0 0;font-size:clamp(.82rem,2.3vw,1rem);letter-spacing:.08em;
+  color:var(--pink);text-transform:uppercase;}
+.promo-tramos{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:center;margin:1.2rem 0 0;}
+.promo-tramos span{border:1px solid rgba(255,189,197,.45);color:var(--cream);border-radius:999px;
+  padding:.38rem .85rem;font-size:.76rem;letter-spacing:.07em;}
+.ptag{position:absolute;left:.6rem;top:.6rem;background:var(--wine);color:var(--cream);
+  border-radius:999px;padding:.3rem .7rem;font-size:.72rem;font-weight:600;letter-spacing:.03em;
+  z-index:2;box-shadow:0 2px 8px rgba(45,10,1,.22);}
+.sin-foto{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:.35rem;text-align:center;padding:1rem;
+  background:linear-gradient(160deg,#F3E7DA,#E8D7C5);}
+.sin-foto span{font-family:var(--serif);font-size:1rem;color:var(--wine);letter-spacing:.03em;}
+.sin-foto em{font-style:normal;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#9A7B64;}
+.volver{display:inline-flex;align-items:center;gap:.45rem;margin-top:1.4rem;
+  border:1px solid var(--hairline);border-radius:999px;padding:.7rem 1.1rem;
+  font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--wine);
+  text-decoration:none;background:#fff;min-height:44px;}
+.volver:hover{background:var(--cream);}
+</style>
+</head>
+<body>
+
+<section class="portada">
+  <p class="portada-k">PERFUMERÍA VIIENA</p>
+  <h1 class="portada-t">Promoción</h1>
+  <p class="promo-bajada">97 perfumes a $200.000 o menos</p>
+  <div class="promo-tramos">
+    <span>$169.000</span><span>$179.000</span><span>$189.000</span><span>$199.000</span>
+  </div>
+</section>
+
+<div class="tira">MEDELLÍN, COLOMBIA &nbsp;·&nbsp; ENVÍOS A TODO EL PAÍS &nbsp;·&nbsp; <b>WHATSAPP +57 317 693 3894</b></div>
+
+<section class="catalogo">
+  <div class="cat-head">
+    <p class="k">PRECIOS DE PROMOCIÓN</p>
+    <h2>Todo a $200.000 o menos</h2>
+  </div>
+
+  <div class="barra-fija">
+    <div class="buscador">
+      <input type="text" id="q" placeholder="Buscar por marca, nombre o familia olfativa…" autocomplete="off">
+      <span class="cuenta" id="cuenta"></span>
+    </div>
+    <div class="filtros" role="group" aria-label="Filtrar por género">
+      <button data-f="todos" aria-pressed="true">Todos</button>
+      <button data-f="Dama" aria-pressed="false">Dama</button>
+      <button data-f="Caballero" aria-pressed="false">Caballero</button>
+      <button data-f="Unisex" aria-pressed="false">Unisex</button>
+    </div>
+    <div class="filtros" role="group" aria-label="Filtrar por precio">
+      <button data-p="todos" aria-pressed="true">Todo precio</button>
+      <button data-p="169000" aria-pressed="false">$169.000</button>
+      <button data-p="179000" aria-pressed="false">$179.000</button>
+      <button data-p="189000" aria-pressed="false">$189.000</button>
+      <button data-p="199000" aria-pressed="false">$199.000</button>
+    </div>
+  </div>
+
+  <div class="grid">
+      <article class="card" data-gen="Unisex" data-fam="emper-stallion-53" data-ml="100" data-precio="169000">
+        <div class="card-media">
+          <img src="fotos/emper-stallion-53-100.webp" alt="Emper Stallion 53 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$169.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Emper</p>
+          <h3 class="c-nombre">Stallion 53</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: violeta, cardamomo. Corazón: iris, ámbar. Fondo: sándalo, cuero, papiro, madera de cedro.</p>
+          <div class="c-precio">$169.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Emper%20Stallion%2053%20de%20100%20ml%20a%20%24169.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="nautica-voyage" data-ml="100" data-precio="169000">
+        <div class="card-media">
+          <img src="fotos/nautica-voyage-200.jpg" alt="Nautica Voyage 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$169.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Nautica</p>
+          <h3 class="c-nombre">Voyage</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$169.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Nautica%20Voyage%20de%20100%20ml%20a%20%24169.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="versace-red-jeans" data-ml="75" data-precio="169000">
+        <div class="card-media">
+          <img src="fotos/versace-red-jeans-75.jpg" alt="Versace Red Jeans 75 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$169.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Versace</p>
+          <h3 class="c-nombre">Red Jeans</h3>
+          <p class="c-meta">75 ML</p>
+          <p class="c-notas">Salida: durazno (melocotón), albaricoque (chabacano), fresia, grosellas negrasnotas de corazón: rosa, violeta, lirio de valles. Corazón: rosa, violeta, lirio de valles, nenúfar (lirio de agua), vainilla, sándalo. Fondo: almizcle blanco, vainilla, sándalo.</p>
+          <div class="c-precio">$169.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Versace%20Red%20Jeans%20de%2075%20ml%20a%20%24169.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="armaf-club-de-nuit-women" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Armaf</span><em>foto en camino</em></div>
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Club de Nuit Women</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Club%20de%20Nuit%20Women%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-odyssey-mega" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-mega-100.jpg" alt="Armaf Odyssey Mega 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Mega</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: jengibre, bergamota, naranja, limón, menta. ( inicio fresco, especiado. Corazón: enebro de virginia, piña, geranio, salvia. ( corazón frutal, herbal. Fondo: haba tonka, vetiver, cedro, almizcle. ( fondo cálido, amaderado.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Mega%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-ajwad" data-ml="60" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-ajwad-60.jpg" alt="Lattafa Ajwad 60 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Ajwad</h3>
+          <p class="c-meta">60 ML</p>
+          <p class="c-notas">Salida: guayaba, toronja (pomelo) rosada, lichi, pimienta rosa. Corazón: rosa, peonía, magnolia. Fondo: cuero, almizcle, ámbar gris, vainilla, musgo.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Ajwad%20de%2060%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-ajwad-pink-to-pink" data-ml="60" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-ajwad-pink-to-pink-60.jpg" alt="Lattafa Ajwad Pink to Pink 60 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Ajwad Pink to Pink</h3>
+          <p class="c-meta">60 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Ajwad%20Pink%20to%20Pink%20de%2060%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-al-ameed" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Lattafa</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Al Ameed</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Al%20Ameed%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-al-areeq-silver" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-areeq-silver-100.jpg" alt="Lattafa Al Areeq Silver 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Al Areeq Silver</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Aromático amaderado</span>
+          <p class="c-notas">Salida: bergamota, cítricos. Corazón: lavanda, jazmín. Fondo: ámbar, almizcle, cedro.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Al%20Areeq%20Silver%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-al-noble-safeer" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/al-noble-safeer-100.jpg" alt="Lattafa Al Noble Safeer 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Al Noble Safeer</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Al%20Noble%20Safeer%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-al-noble-wazeer" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/al-noble-wazeer-100.jpg" alt="Lattafa Al Noble Wazeer 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Al Noble Wazeer</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Al%20Noble%20Wazeer%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-amethyst" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-badee-al-oud-amethyst-100.jpg" alt="Lattafa Amethyst 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Amethyst</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral amaderado oud</span>
+          <p class="c-notas">Salida: bergamota, azafrán. Corazón: rosa, oud. Fondo: ámbar, almizcle, madera.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Amethyst%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-blue-oud" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Lattafa</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Blue Oud</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Blue%20Oud%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-fakhar-black" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-fakhar-black-100.jpg" alt="Lattafa Fakhar Black 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Fakhar Black</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: manzana, bergamota, jengibre. Corazón: lavanda, salvia, bayas de enebro, geranio. Fondo: tonka, cedro, amberwood, vetiver.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Fakhar%20Black%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-khaltaat-al-arabia" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-khaltaat-al-arabia-royal-blends-100.jpg" alt="Lattafa Khaltaat Al Arabia 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Khaltaat Al Arabia</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental especiado</span>
+          <p class="c-notas">Salida: azafrán, especias. Corazón: dátil, rosa. Fondo: oud, ámbar, vainilla.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Khaltaat%20Al%20Arabia%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-liam" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-liam-blue-shine-100.jpg" alt="Lattafa Liam 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Liam</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Liam%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-maharjan-gold" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-maharjan-gold-100.jpg" alt="Lattafa Maharjan Gold 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Maharjan Gold</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Ámbar floral</span>
+          <p class="c-notas">Salida: azafrán, bergamota. Corazón: rosa, jazmín. Fondo: ámbar, vainilla, almizcle.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Maharjan%20Gold%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-maharjan-silver" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-maharjan-silver-100.jpg" alt="Lattafa Maharjan Silver 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Maharjan Silver</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Aromático amaderado</span>
+          <p class="c-notas">Salida: bergamota, limón. Corazón: lavanda, salvia. Fondo: ámbar, almizcle, cedro.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Maharjan%20Silver%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-mayar" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-mayar-100.jpg" alt="Lattafa Mayar 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Mayar</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral frutal</span>
+          <p class="c-notas">Salida: lichi, frambuesa. Corazón: jazmín, peonía. Fondo: almizcle, vainilla.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Mayar%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-oud-for-glory" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-oud-for-glory-100.jpg" alt="Lattafa Oud For Glory 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Oud For Glory</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental amaderado oud</span>
+          <p class="c-notas">Salida: especias. Corazón: oud, rosa. Fondo: ámbar, madera.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Oud%20For%20Glory%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-qaed-al-fursan" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-qaed-al-fursan-100.jpg" alt="Lattafa Qaed Al Fursan 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Qaed Al Fursan</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental Especiado Frutal</span>
+          <p class="c-notas">Salida: Bergamota, ciruela, manzanilla. Corazón: Café, jengibre, almendra, canela. Fondo: Vainilla, almizcle, oud, ámbar.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Qaed%20Al%20Fursan%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-qaed-al-fursan-unlimited" data-ml="90" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-qaed-al-fursan-unlimited-90.jpg" alt="Lattafa Qaed Al Fursan Unlimited 90 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Qaed Al Fursan Unlimited</h3>
+          <p class="c-meta">90 ML</p>
+          <span class="c-chip">Oriental Especiado Frutal</span>
+          <p class="c-notas">Salida: coco, cítricos, afrutada. Corazón: ylang-ylang, jazmín, romántica. Fondo: vainilla, almizcle, sándalo. estas notas base.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Qaed%20Al%20Fursan%20Unlimited%20de%2090%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-qimmah-for-men" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/qimmah-for-men-lattafa-super-rich-fragrance-original-100-perfume-100.jpg" alt="Lattafa Qimmah For Men 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Qimmah For Men</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Qimmah%20For%20Men%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-sheikh-al-shuyukh-luxe-edition" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-sheikh-al-shuyukh-luxe-edition-u-100.jpg" alt="Lattafa Sheikh Al Shuyukh Luxe Edition 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Sheikh Al Shuyukh Luxe Edition</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Frutal floral</span>
+          <p class="c-notas">Salida: frutos rojos, bergamota. Corazón: rosa, jazmín. Fondo: vainilla, almizcle, ámbar.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Sheikh%20Al%20Shuyukh%20Luxe%20Edition%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-velvet-oud" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-velvet-oud-100.jpg" alt="Lattafa Velvet Oud 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Velvet Oud</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Amaderado oriental</span>
+          <p class="c-notas">Salida: azafrán, especias. Corazón: oud, rosa. Fondo: vainilla, haba tonka, ámbar.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Velvet%20Oud%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-velvet-rose" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-velvet-rose-100.jpg" alt="Lattafa Velvet Rose 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Velvet Rose</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Corazón: rosa, agua de rosas.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Velvet%20Rose%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-yara" data-ml="20" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-yara-20.jpg" alt="Lattafa Yara 20 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Yara</h3>
+          <p class="c-meta">20 ML</p>
+          <span class="c-chip">Floral Frutal Gourmand</span>
+          <p class="c-notas">Salida: Albaricoque, gardenia. Corazón: Mandarina, jazmín, almendra. Fondo: Vainilla, almizcle, ámbar, sándalo.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Yara%20de%2020%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-yara-candy" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-yara-candy-100.jpg" alt="Lattafa Yara Candy 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Yara Candy</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral Frutal Dulce</span>
+          <p class="c-notas">Salida: Caramelo, frutos rojos, bergamota. Corazón: Jazmín, rosa, vainilla. Fondo: Almizcle, ámbar, maderas dulces.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Yara%20Candy%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-yara-moi" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/lattafa-yara-moi-100.jpg" alt="Lattafa Yara Moi 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Yara Moi</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral Frutal Cremoso</span>
+          <p class="c-notas">Salida: Lichi, frambuesa, bergamota. Corazón: Jazmín, rosa, vainilla. Fondo: Almizcle, sándalo, ámbar.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Yara%20Moi%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="maison-alhambra-infini-oud-joyous" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-infini-oud-joyous-100.jpg" alt="Maison Alhambra Infini Oud Joyous 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Infini Oud Joyous</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Infini%20Oud%20Joyous%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="maison-alhambra-infini-rose" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-infini-rose-100.jpg" alt="Maison Alhambra Infini Rose 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Infini Rose</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Infini%20Rose%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="maison-alhambra-kismet-for-men" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-kismet-100.jpg" alt="Maison Alhambra Kismet For Men 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Kismet For Men</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Kismet%20For%20Men%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="maison-alhambra-perseus" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-perseus-100.jpg" alt="Maison Alhambra Perseus 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Perseus</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Perseus%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="maison-alhambra-philos-centro" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-philos-centro-100.jpg" alt="Maison Alhambra Philos Centro 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Philos Centro</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Philos%20Centro%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="maison-alhambra-philos-pura" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-philos-pura-100.jpg" alt="Maison Alhambra Philos Pura 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Philos Pura</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Philos%20Pura%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="maison-alhambra-philos-rosso" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-philos-rosso-100.jpg" alt="Maison Alhambra Philos Rosso 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Philos Rosso</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Philos%20Rosso%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="maison-alhambra-reyna" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-reyna-100.jpg" alt="Maison Alhambra Reyna 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Reyna</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Reyna%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="maison-alhambra-rouge-baroque" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Maison Alhambra</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Rouge Baroque</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Rouge%20Baroque%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="versace-blue-jeans" data-ml="75" data-precio="179000">
+        <div class="card-media">
+          <img src="fotos/versace-blue-jeans-75.jpg" alt="Versace Blue Jeans 75 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Versace</p>
+          <h3 class="c-nombre">Blue Jeans</h3>
+          <p class="c-meta">75 ML</p>
+          <p class="c-notas">Salida: cítricos (bergamota, limón), enebro, anís, palo de rosa, albahacanotas de corazón: lavanda. Corazón: lavanda, rosa, clavel, jazmín, geranio, heliotropo. Fondo: vainilla, haba tonka, sándalo, iris, almizcle, cedro.</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Versace%20Blue%20Jeans%20de%2075%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="zakat-parfum-silverado-83" data-ml="100" data-precio="179000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Zakat Parfum</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$179.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Zakat Parfum</p>
+          <h3 class="c-nombre">Silverado 83</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$179.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Zakat%20Parfum%20Silverado%2083%20de%20100%20ml%20a%20%24179.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="afnan-9-pm" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/afnan-9-pm-100.jpg" alt="Afnan 9 Pm 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Afnan</p>
+          <h3 class="c-nombre">9 Pm</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental Dulce Amaderado</span>
+          <p class="c-notas">Salida: Manzana verde, canela. Corazón: Rosa, café, haba tonka. Fondo: Vainilla, ámbar, sándalo, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Afnan%209%20Pm%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-club-de-nuit-intense-man" data-ml="105" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/armaf-club-de-nuit-intense-man-105.jpg" alt="Armaf Club de Nuit Intense Man 105 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Club de Nuit Intense Man</h3>
+          <p class="c-meta">105 ML</p>
+          <span class="c-chip">Amaderado frutal</span>
+          <p class="c-notas">Salida: piña, bergamota, manzana negra. Corazón: abedul, jazmín. Fondo: almizcle, ámbar, roble.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Club%20de%20Nuit%20Intense%20Man%20de%20105%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-club-de-nuit-urban-man" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/armaf-club-de-nuit-urban-man-100.jpg" alt="Armaf Club de Nuit Urban Man 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Club de Nuit Urban Man</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: bergamota, pomelo, menta, cardamomo. Corazón: nuez moscada, lavanda, jengibre, cedro. Fondo: pachulí, vetiver, sándalo, musgo de roble.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Club%20de%20Nuit%20Urban%20Man%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-odyssey-aqua" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-aqua-100.jpg" alt="Armaf Odyssey Aqua 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Aqua</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: naranja, toronja (pomelo), abrótano. ( inicio cítrico, aromático. Corazón: menta, lavanda. ( corazón fresco, herbal. Fondo: ambroxan, pachulí, ciprés. ( fondo amaderado, ambarino.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Aqua%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="armaf-odyssey-candee" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-candee-100.jpg" alt="Armaf Odyssey Candee 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Candee</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Gourmand Frutal</span>
+          <p class="c-notas">Salida: fresa, frambuesa, geranio, bergamota, durazno melocotón. Corazón: caramelo, jazmín, maracuyá (fruta de pasión). Fondo: pachulí, almizcle, ámbar.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Candee%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-odyssey-mandarin-sky" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-mandarin-sky-100.jpg" alt="Armaf Odyssey Mandarin Sky 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Mandarin Sky</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Cítrico Amaderado Intenso</span>
+          <p class="c-notas">Salida: Mandarina, bergamota, azafrán. Corazón: Cuero, jazmín, oud suave. Fondo: Ámbar, vainilla, sándalo, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Mandarin%20Sky%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-odyssey-spectra" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-spectra-100.jpg" alt="Armaf Odyssey Spectra 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Spectra</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Aromático Amaderado</span>
+          <p class="c-notas">Salida: Bergamota, lavanda, especias. Corazón: Geranio, salvia. Fondo: Cedro, ámbar, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Spectra%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="bharara-rome-extradose-pour-homme" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/bharara-rome-extradose-100.jpg" alt="Bharara Rome Extradose Pour Homme 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Bharara</p>
+          <h3 class="c-nombre">Rome Extradose Pour Homme</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Bharara%20Rome%20Extradose%20Pour%20Homme%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="bharara-rome-imagine" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/bharara-rome-imagine-100.jpg" alt="Bharara Rome Imagine 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Bharara</p>
+          <h3 class="c-nombre">Rome Imagine</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Bharara%20Rome%20Imagine%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="bharara-rome-pour-femme" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/bharara-rome-pour-femme-100.jpg" alt="Bharara Rome Pour Femme 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Bharara</p>
+          <h3 class="c-nombre">Rome Pour Femme</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Corazón: revela hojas de violeta, jazmín, manzana verde crujiente. Fondo: cierra.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Bharara%20Rome%20Pour%20Femme%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="calvin-klein-ck-in2u-for-her" data-ml="150" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/calvin-klein-ck-in2u-for-her-150.jpg" alt="Calvin Klein CK In2U For Her 150 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Calvin Klein</p>
+          <h3 class="c-nombre">CK In2U For Her</h3>
+          <p class="c-meta">150 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Calvin%20Klein%20CK%20In2U%20For%20Her%20de%20150%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="calvin-klein-ck-in2u-for-him" data-ml="150" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/calvin-klein-ck-in2u-for-him-100.jpg" alt="Calvin Klein CK In2U For Him 150 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Calvin Klein</p>
+          <h3 class="c-nombre">CK In2U For Him</h3>
+          <p class="c-meta">150 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Calvin%20Klein%20CK%20In2U%20For%20Him%20de%20150%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-al-noble-ameer" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-noble-ameer-100.jpg" alt="Lattafa Al Noble Ameer 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Al Noble Ameer</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Amaderado oriental</span>
+          <p class="c-notas">Salida: azafrán, especias. Corazón: oud, rosa. Fondo: ámbar, sándalo, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Al%20Noble%20Ameer%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-al-noble-blush" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-noble-blush-100.jpg" alt="Lattafa Al Noble Blush 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Al Noble Blush</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral Frutal Cremoso</span>
+          <p class="c-notas">Salida: Lichi, frambuesa, bergamota. Corazón: Rosa, peonía, vainilla. Fondo: Almizcle, sándalo, ámbar.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Al%20Noble%20Blush%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-asad" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-asad-100.jpg" alt="Lattafa Asad 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Asad</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental amaderado especiado</span>
+          <p class="c-notas">Salida: especias, cítricos. Corazón: cuero, oud. Fondo: ámbar, madera.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Asad%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-asad-bourbon" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-asad-bourbon.jpg" alt="Lattafa Asad Bourbon 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Asad Bourbon</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental amaderado especiado</span>
+          <p class="c-notas">Salida: whisky, especias. Corazón: cuero, tabaco. Fondo: ámbar, madera.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Asad%20Bourbon%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-asad-zanzibar" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-asad-zanzibar-100.jpg" alt="Lattafa Asad Zanzibar 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Asad Zanzibar</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental Cuero Tabaco</span>
+          <p class="c-notas">Salida: lavanda, pimienta negra. Corazón: agua de coco, iris, sal. Fondo: vainilla e incienso.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Asad%20Zanzibar%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-fakhar-gold" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-fakhar-gold-u-100.jpg" alt="Lattafa Fakhar Gold 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Fakhar Gold</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Ámbar amaderado</span>
+          <p class="c-notas">Salida: azafrán, bergamota. Corazón: rosa, jazmín. Fondo: ámbar, sándalo, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Fakhar%20Gold%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-fakhar-platinum" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Lattafa</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Fakhar Platinum</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Fakhar%20Platinum%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-fakhar-rose" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-fakhar-rose-100.jpg" alt="Lattafa Fakhar Rose 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Fakhar Rose</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral frutal</span>
+          <p class="c-notas">Salida: frutos rojos, bergamota. Corazón: rosa, jazmín. Fondo: almizcle, vainilla, ámbar.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Fakhar%20Rose%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-hayaati" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-hayaati-100.jpg" alt="Lattafa Hayaati 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Hayaati</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: manzana, bergamota. Corazón: canela, notas amaderadas. Fondo: almizcle, vainilla..</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Hayaati%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-hayaati-al-maleky" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-hayaati-maleky-100.jpg" alt="Lattafa Hayaati Al Maleky 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Hayaati Al Maleky</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Hayaati%20Al%20Maleky%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-hayaati-gold-elixir" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-hayaati-gold-elixir-100.jpg" alt="Lattafa Hayaati Gold Elixir 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Hayaati Gold Elixir</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental Vainilla</span>
+          <p class="c-notas">Salida: Bergamota, frutos rojos. Corazón: Rosa, jazmín, vainilla. Fondo: Ámbar, almizcle, sándalo.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Hayaati%20Gold%20Elixir%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-honor-and-glory" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Lattafa</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Honor and Glory</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Honor%20and%20Glory%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-ishq-al-shuyukh-gold" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-ishq-al-shuyukh-gold-100.jpg" alt="Lattafa Ishq Al Shuyukh Gold 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Ishq Al Shuyukh Gold</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: caramelo, azafrán. Corazón: haba tonka, gamuza. Fondo: ámbar, vainilla, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Ishq%20Al%20Shuyukh%20Gold%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-khamrah" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-khamrah-100.jpg" alt="Lattafa Khamrah 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Khamrah</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental especiado gourmand</span>
+          <p class="c-notas">Salida: canela, nuez moscada, pimienta. Corazón: dátil, praliné. Fondo: vainilla, ámbar, madera.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Khamrah%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-khamrah-qahwa" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-khamrah-qahwa-100.jpg" alt="Lattafa Khamrah Qahwa 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Khamrah Qahwa</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental Gourmand Especiado</span>
+          <p class="c-notas">Salida: canela, cardamomo, jengibre. Corazón: praliné, frutas confitadas, flores blancas. Fondo: café arábica, vainilla, haba tonka, benjuí, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Khamrah%20Qahwa%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-mayar-natural-intense" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-mayar-natural-intense-100.jpg" alt="Lattafa Mayar Natural Intense 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Mayar Natural Intense</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral frutal</span>
+          <p class="c-notas">Salida: frutas confitadas, limón. Corazón: jazmín, rosa. Fondo: almizcle, vainilla, ámbar.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Mayar%20Natural%20Intense%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-qaed-al-fursan-untamed-caf" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-qaed-al-fursan-untamed-100.jpg" alt="Lattafa Qaed Al Fursan Untamed CafÉ 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Qaed Al Fursan Untamed CafÉ</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental Aromático</span>
+          <p class="c-notas">Salida: Bergamota, manzana, lavanda. Corazón: Cardamomo, canela, geranio. Fondo: Cuero, vainilla, ámbar, oud, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Qaed%20Al%20Fursan%20Untamed%20Caf%C3%89%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-ramz-gold" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-ramz-gold-100.jpg" alt="Lattafa Ramz Gold 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Ramz Gold</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Ámbar amaderado</span>
+          <p class="c-notas">Salida: azafrán, bergamota. Corazón: rosa, jazmín. Fondo: ámbar, sándalo, almizcle.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Ramz%20Gold%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-rave-now" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-rave-now-100.jpg" alt="Lattafa Rave Now 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Rave Now</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral Frutal Festivo</span>
+          <p class="c-notas">Salida: Frutos rojos, pera, bergamota. Corazón: Rosa, peonía, jazmín. Fondo: Vainilla, almizcle, maderas dulces.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Rave%20Now%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="lattafa-rave-now-rouge" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-rave-now-rouge-100.jpg" alt="Lattafa Rave Now Rouge 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Rave Now Rouge</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Rave%20Now%20Rouge%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-rave-now-woman" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-rave-now-woman-100.jpg" alt="Lattafa Rave Now Woman 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Rave Now Woman</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral Frutal Festivo</span>
+          <p class="c-notas">Salida: Frutos rojos, pera, bergamota. Corazón: Rosa, peonía, jazmín. Fondo: Vainilla, almizcle, maderas dulces.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Rave%20Now%20Woman%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-shaheen-silver" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-pride-shaheen-silver-100.jpg" alt="Lattafa Shaheen Silver 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Shaheen Silver</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Shaheen%20Silver%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-yara-tous" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/lattafa-yara-tous-100.jpg" alt="Lattafa Yara Tous 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Yara Tous</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral Frutal Almizclado</span>
+          <p class="c-notas">Salida: Frutos blancos, bergamota. Corazón: Jazmín, rosa blanca. Fondo: Almizcle blanco, ámbar, maderas suaves.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Yara%20Tous%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="maison-alhambra-jean-lowe-immortel" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-jean-lowe-immortel-100.jpg" alt="Maison Alhambra Jean Lowe Immortel 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Jean Lowe Immortel</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: jengibre, toronja, bergamota. Corazón: romero, notas acuáticas, salvia, geranio. Fondo: ambroxan, ámbar, ládano.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Jean%20Lowe%20Immortel%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="maison-alhambra-jean-lowe-matiere" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-jean-lowe-mati-re-100.jpg" alt="Maison Alhambra Jean Lowe Matiere 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Jean Lowe Matiere</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Jean%20Lowe%20Matiere%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="moschino-fresh-couture" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/moschino-fresh-couture-100.jpg" alt="Moschino Fresh Couture 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Moschino</p>
+          <h3 class="c-nombre">Fresh Couture</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Floral verde</span>
+          <p class="c-notas">Salida: grosella negra, naranja, menta. Corazón: rosa, peonía, ciclamen. Fondo: sándalo, almizcle, ámbar.</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Moschino%20Fresh%20Couture%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="moschino-fresh-gold" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/moschino-fresh-couture-gold-100.jpg" alt="Moschino Fresh Gold 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Moschino</p>
+          <h3 class="c-nombre">Fresh Gold</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Moschino%20Fresh%20Gold%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="moschino-fresh-pink" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/moschino-fresh-pink-couture-100.jpg" alt="Moschino Fresh Pink 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Moschino</p>
+          <h3 class="c-nombre">Fresh Pink</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Moschino%20Fresh%20Pink%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="noya-amber-is-great" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Noya</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Noya</p>
+          <h3 class="c-nombre">Amber Is Great</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Noya%20Amber%20Is%20Great%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="noya-musk-is-great" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Noya</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Noya</p>
+          <h3 class="c-nombre">Musk Is Great</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Noya%20Musk%20Is%20Great%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="noya-oud-is-great" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Noya</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Noya</p>
+          <h3 class="c-nombre">Oud Is Great</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Noya%20Oud%20Is%20Great%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="ryan-castro-ghetto-arte-del-barrio" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Ryan Castro</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Ryan Castro</p>
+          <h3 class="c-nombre">Ghetto Arte del Barrio</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Ryan%20Castro%20Ghetto%20Arte%20del%20Barrio%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="tous-kids-bear" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <img src="fotos/tous-kids-bear-100.jpg" alt="Tous Kids Bear 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Tous</p>
+          <h3 class="c-nombre">Kids Bear</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Tous%20Kids%20Bear%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="tous-kids-boy" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Tous</span><em>foto en camino</em></div>
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Tous</p>
+          <h3 class="c-nombre">Kids Boy</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Tous%20Kids%20Boy%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="tous-kids-girl" data-ml="100" data-precio="189000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Tous</span><em>foto en camino</em></div>
+          <span class="gtag">Dama</span>
+          <span class="ptag">$189.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Tous</p>
+          <h3 class="c-nombre">Kids Girl</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$189.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Tous%20Kids%20Girl%20de%20100%20ml%20a%20%24189.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-odyssey-homme" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-homme-100.jpg" alt="Armaf Odyssey Homme 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Homme</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Amaderado Especiado</span>
+          <p class="c-notas">Salida: Cardamomo, bergamota, pimienta rosa. Corazón: Cuero, iris, oud. Fondo: Sándalo, ámbar, vetiver.</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Homme%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-odyssey-limoni" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-limoni-100.jpg" alt="Armaf Odyssey Limoni 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Limoni</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Cítrico Aromático</span>
+          <p class="c-notas">Salida: Limón siciliano, bergamota, lima. Corazón: Hierbas mediterráneas, jazmín. Fondo: Cedro, vetiver, almizcle blanco.</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Limoni%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="armaf-odyssey-mandarin-sky-elixir" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-mandarin-sky-elixir-100.jpg" alt="Armaf Odyssey Mandarin Sky Elixir 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Mandarin Sky Elixir</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Cítrico Amaderado Intenso</span>
+          <p class="c-notas">Salida: Mandarina, bergamota, azafrán. Corazón: Cuero, jazmín, oud suave. Fondo: Ámbar, vainilla, sándalo, almizcle.</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Mandarin%20Sky%20Elixir%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-odyssey-revolution" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-revolution-100.jpg" alt="Armaf Odyssey Revolution 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Revolution</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Revolution%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="armaf-odyssey-tyrant" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <img src="fotos/armaf-odyssey-tyrant-100.jpg" alt="Armaf Odyssey Tyrant 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Armaf</p>
+          <h3 class="c-nombre">Odyssey Tyrant</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Armaf%20Odyssey%20Tyrant%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="french-a-venue-dakota-grandeur-elite" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <div class="sin-foto"><span>French A Venue</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">French A Venue</p>
+          <h3 class="c-nombre">Dakota Grandeur Elite</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20French%20A%20Venue%20Dakota%20Grandeur%20Elite%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Dama" data-fam="lattafa-mayar-cherry-intense" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <img src="fotos/lattafa-mayar-cherry-intense-100.jpg" alt="Lattafa Mayar Cherry Intense 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Dama</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Mayar Cherry Intense</h3>
+          <p class="c-meta">100 ML</p>
+          <p class="c-notas">Salida: fresa, cacaonotas de fondo: vainilla, ámbar, pachulí. Corazón: mermelada de cereza, cacaonotas de fondo: vainilla, ámbar, pachulí. Fondo: vainilla, ámbar, pachulí.</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Mayar%20Cherry%20Intense%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Caballero" data-fam="lattafa-sublime" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <img src="fotos/lattafa-bade-e-al-oud-sublime-100.jpg" alt="Lattafa Sublime 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Caballero</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Lattafa</p>
+          <h3 class="c-nombre">Sublime</h3>
+          <p class="c-meta">100 ML</p>
+          <span class="c-chip">Oriental amaderado oud</span>
+          <p class="c-notas">Salida: azafrán, cítricos. Corazón: rosa, oud. Fondo: ámbar, madera, almizcle.</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Lattafa%20Sublime%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="maison-alhambra-jean-lowe-noir" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <img src="fotos/maison-alhambra-jean-lowe-noir-100.jpg" alt="Maison Alhambra Jean Lowe Noir 100 ml" loading="lazy" decoding="async">
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Maison Alhambra</p>
+          <h3 class="c-nombre">Jean Lowe Noir</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Maison%20Alhambra%20Jean%20Lowe%20Noir%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+      <article class="card" data-gen="Unisex" data-fam="nusuk-ana-al-awaal" data-ml="100" data-precio="199000">
+        <div class="card-media">
+          <div class="sin-foto"><span>Nusuk</span><em>foto en camino</em></div>
+          <span class="gtag">Unisex</span>
+          <span class="ptag">$199.000</span>
+        </div>
+        <div class="card-info">
+          <p class="c-marca">Nusuk</p>
+          <h3 class="c-nombre">Ana Al Awaal</h3>
+          <p class="c-meta">100 ML</p>
+          <div class="c-precio">$199.000</div>
+          <a class="c-adquirir" href="https://wa.me/573176933894?text=Hola%21%20Me%20interesa%20el%20Nusuk%20Ana%20Al%20Awaal%20de%20100%20ml%20a%20%24199.000%20%28promocion%20Viiena%29.%20Esta%20disponible%3F" target="_blank" rel="noopener">Adquirir</a>
+        </div>
+      </article>
+  </div>
+</section>
+
+<p class="sin-resultados" id="sinResultados">No encontramos ningún perfume con ese término. Prueba con otra marca o palabra.</p>
+
+<a class="wa-flota" href="https://wa.me/573176933894?text=Hola%21%20Vi%20el%20catalogo%20de%20Viiena%20y%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.06 24l1.68-6.16A11.87 11.87 0 010 11.9C0 5.33 5.34 0 11.9 0a11.8 11.8 0 018.4 3.48A11.8 11.8 0 0123.8 11.9c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 01-5.7-1.45L.06 24zM6.6 20.2l.36.2a9.9 9.9 0 004.94 1.35 9.88 9.88 0 100-19.76 9.88 9.88 0 00-9.88 9.88c0 1.9.54 3.75 1.56 5.34l.24.38-1 3.63 3.78-1.02zm11.4-5.55c-.08-.14-.3-.22-.62-.38-.32-.16-1.9-.94-2.2-1.04-.3-.11-.5-.16-.72.16-.2.32-.82 1.03-1 1.25-.19.21-.37.24-.68.08-.32-.16-1.35-.5-2.57-1.59-.95-.84-1.6-1.88-1.78-2.2-.19-.32-.02-.5.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.08 1.3 3.29c.16.21 2.24 3.42 5.43 4.8.76.32 1.35.52 1.81.67.76.24 1.45.2 2 .12.61-.09 1.9-.77 2.16-1.52.27-.75.27-1.38.19-1.52z"/></svg><span>ESCRÍBENOS</span></a>
+
+<div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-label="Detalle del perfume">
+  <div class="ficha-caja">
+    <button class="ficha-x" id="fichaX" aria-label="Cerrar">&times;</button>
+    <div class="ficha-scroll">
+      <div class="ficha-img"><img id="fImg" src="" alt=""></div>
+      <div class="ficha-datos">
+      <p class="f-marca" id="fMarca"></p>
+      <h3 id="fNombre"></h3>
+      <p class="f-meta" id="fMeta"></p>
+      <div class="f-tallas" id="fTallas"></div>
+      <span class="f-chip" id="fChip"></span>
+      <p class="f-notas" id="fNotas"></p>
+      <div class="f-precio" id="fPrecio"></div>
+      <p class="ficha-nota">Te responderemos por WhatsApp con disponibilidad y formas de pago.<br>Estamos en Medellín y enviamos a todo el país.</p>
+      </div>
+    </div>
+    <div class="ficha-compra">
+      <a class="ficha-wa" id="fWa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.06 24l1.68-6.16A11.87 11.87 0 010 11.9C0 5.33 5.34 0 11.9 0a11.8 11.8 0 018.4 3.48A11.8 11.8 0 0123.8 11.9c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 01-5.7-1.45L.06 24zM6.6 20.2l.36.2a9.9 9.9 0 004.94 1.35 9.88 9.88 0 100-19.76 9.88 9.88 0 00-9.88 9.88c0 1.9.54 3.75 1.56 5.34l.24.38-1 3.63 3.78-1.02zm11.4-5.55c-.08-.14-.3-.22-.62-.38-.32-.16-1.9-.94-2.2-1.04-.3-.11-.5-.16-.72.16-.2.32-.82 1.03-1 1.25-.19.21-.37.24-.68.08-.32-.16-1.35-.5-2.57-1.59-.95-.84-1.6-1.88-1.78-2.2-.19-.32-.02-.5.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.73-.98-2.37-.26-.62-.52-.54-.72-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.08 1.3 3.29c.16.21 2.24 3.42 5.43 4.8.76.32 1.35.52 1.81.67.76.24 1.45.2 2 .12.61-.09 1.9-.77 2.16-1.52.27-.75.27-1.38.19-1.52z"/></svg> PEDIR POR WHATSAPP</a>
+    </div>
+  </div>
+</div>
+
+<footer class="pie">
+  <p class="k">PERFUMERÍA VIIENA</p>
+  <h4>Medellín, Colombia</h4>
+  <div class="sep"></div>
+  <p>WhatsApp <a href="https://wa.me/573176933894" target="_blank" rel="noopener">+57 317 693 3894</a></p>
+  <p>Envíos a todo el país</p>
+  <p>Precios de promoción, sujetos a disponibilidad</p>
+  <a class="volver" href="index.html">Ver el catálogo completo</a>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) { document.body.classList.add('anim'); }
+
+  var cards = [].slice.call(document.querySelectorAll('.card'));
+
+  /* --- las tarjetas aparecen al entrar en pantalla --- */
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(ent){
+      ent.forEach(function(e){
+        if (e.isIntersecting){
+          var d = (e.target.dataset.delay || 0);
+          setTimeout(function(){ e.target.classList.add('visible'); }, d);
+          io.unobserve(e.target);
+        }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    cards.forEach(function(c, i){ c.dataset.delay = (i % 4) * 70; io.observe(c); });
+  } else {
+    cards.forEach(function(c){ c.classList.add('visible'); });
+  }
+
+  /* Red de seguridad: mejor sin animacion que sin catalogo. */
+  setTimeout(function(){
+    var faltan = document.querySelectorAll('.card:not(.visible)');
+    for (var i=0;i<faltan.length;i++){ faltan[i].classList.add('visible'); }
+  }, 2500);
+
+  /* --- inclinacion siguiendo el cursor --- */
+  if (!reduce && window.matchMedia('(hover:hover)').matches){
+    cards.forEach(function(card){
+      card.addEventListener('mousemove', function(ev){
+        var r = card.getBoundingClientRect();
+        var mx = (ev.clientX - r.left) / r.width - 0.5;
+        var my = (ev.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(900px) rotateY(' + (mx * 7) + 'deg) rotateX(' + (-my * 7) + 'deg) translateY(-6px)';
+        card.style.boxShadow = '0 22px 46px rgba(45,10,1,.16)';
+      });
+      card.addEventListener('mouseleave', function(){
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+    });
+  }
+
+  /* --- buscador y filtros --- */
+  var q = document.getElementById('q');
+  var cuenta = document.getElementById('cuenta');
+  var vacio = document.getElementById('sinResultados');
+  var generoActivo = 'todos';
+  var precioActivo = 'todos';
+
+  function limpiar(s){
+    return (s||'').toLowerCase()
+      .replace(/[áàäâ]/g,'a').replace(/[éèëê]/g,'e')
+      .replace(/[íìïî]/g,'i').replace(/[óòöô]/g,'o')
+      .replace(/[úùüû]/g,'u').replace(/ñ/g,'n');
+  }
+  cards.forEach(function(c){
+    var cuerpo = c.querySelector('.card-info');
+    c.dataset.txt = limpiar(cuerpo ? cuerpo.textContent : '');
+  });
+
+  function aplicar(){
+    var texto = limpiar(q ? q.value.trim() : '');
+    var visibles = 0;
+    cards.forEach(function(c){
+      var okGen = (generoActivo === 'todos') || (c.getAttribute('data-gen') === generoActivo);
+      var okPre = (precioActivo === 'todos') || (c.getAttribute('data-precio') === precioActivo);
+      var okTxt = (texto === '') || (c.dataset.txt.indexOf(texto) !== -1);
+      var ok = okGen && okPre && okTxt;
+      c.classList.toggle('oculta', !ok);
+      if (ok) visibles++;
+    });
+    var limpio = (generoActivo === 'todos' && precioActivo === 'todos' && texto === '');
+    if (cuenta) cuenta.textContent = limpio ? '' : (visibles + (visibles === 1 ? ' PERFUME' : ' PERFUMES'));
+    if (vacio) vacio.classList.toggle('on', visibles === 0);
+  }
+  if (q) { q.addEventListener('input', aplicar); }
+
+  function grupoFiltros(attr, fijar){
+    var botones = [].slice.call(document.querySelectorAll('.filtros button[' + attr + ']'));
+    botones.forEach(function(b){
+      b.addEventListener('click', function(){
+        fijar(b.getAttribute(attr));
+        botones.forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+        aplicar();
+      });
+    });
+  }
+  grupoFiltros('data-f', function(v){ generoActivo = v; });
+  grupoFiltros('data-p', function(v){ precioActivo = v; });
+
+  /* --- ficha del perfume ---
+     El boton de cada tarjeta es un enlace real a WhatsApp. Si el script
+     falla, el cliente igual llega a escribir. */
+  var ficha = document.getElementById('ficha');
+  var fImg = document.getElementById('fImg');
+  var fMarca = document.getElementById('fMarca');
+  var fNombre = document.getElementById('fNombre');
+  var fMeta = document.getElementById('fMeta');
+  var fChip = document.getElementById('fChip');
+  var fNotas = document.getElementById('fNotas');
+  var fPrecio = document.getElementById('fPrecio');
+  var fWa = document.getElementById('fWa');
+  var fichaX = document.getElementById('fichaX');
+  var fTallas = document.getElementById('fTallas');
+
+  function texto(el, sel){ var n = el.querySelector(sel); return n ? n.textContent.trim() : ''; }
+
+  function abrirFicha(card, href){
+    if (!ficha) return false;
+    var img = card.querySelector('.card-media img');
+    var zonaImg = document.querySelector('.ficha-img');
+    if (img){
+      fImg.src = img.getAttribute('src');
+      fImg.alt = img.getAttribute('alt') || '';
+      if (zonaImg) zonaImg.style.display = '';
+    } else {
+      fImg.removeAttribute('src');
+      if (zonaImg) zonaImg.style.display = 'none';
+    }
+    fMarca.textContent = texto(card, '.c-marca');
+    fNombre.textContent = texto(card, '.c-nombre');
+    fMeta.textContent = texto(card, '.c-meta');
+    var chip = texto(card, '.c-chip');
+    fChip.textContent = chip;
+    fChip.style.display = chip ? 'inline-block' : 'none';
+    var notas = texto(card, '.c-notas');
+    fNotas.textContent = notas;
+    fNotas.style.display = notas ? 'block' : 'none';
+    fPrecio.textContent = texto(card, '.c-precio');
+    fWa.setAttribute('href', href);
+    if (fTallas) { fTallas.innerHTML = ''; fTallas.style.display = 'none'; }
+    ficha.classList.add('abierta');
+    var zonaScroll = document.querySelector('.ficha-scroll');
+    if (zonaScroll) { zonaScroll.scrollTop = 0; }
+    document.body.style.overflow = 'hidden';
+    return true;
+  }
+
+  function cerrarFicha(){
+    if (!ficha) return;
+    ficha.classList.remove('abierta');
+    document.body.style.overflow = '';
+  }
+
+  [].slice.call(document.querySelectorAll('.c-adquirir')).forEach(function(b){
+    b.addEventListener('click', function(ev){
+      var card = b.closest('.card');
+      if (!card) return;
+      if (abrirFicha(card, b.getAttribute('href'))) { ev.preventDefault(); }
+    });
+  });
+  if (fichaX) { fichaX.addEventListener('click', cerrarFicha); }
+  if (ficha) { ficha.addEventListener('click', function(ev){ if (ev.target === ficha) cerrarFicha(); }); }
+  document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') cerrarFicha(); });
+
+})();
+</script>
+</body>
+</html>
